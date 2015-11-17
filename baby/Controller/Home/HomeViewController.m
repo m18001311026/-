@@ -426,6 +426,7 @@
     self.pictureIndex = page;
 //上传 播放
 //    if (self.playingGalleryId == galleryId
+    
 //        && self.isPlayingComment == isComment) {
 ////        self.playingGalleryId = 0;
 ////        self.isPlayingComment = isComment;
