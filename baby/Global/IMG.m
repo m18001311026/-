@@ -37,21 +37,23 @@ static NSMutableDictionary *cache;
                                                attributes:nil
                                                     error:nil];
 }
-
+//图像的磁盘目录网址
 + (NSString *)imageDiskDir:(NSString *)url {
     NSString *fUrl = [url URLEncodedString];
     return [NSTemporaryDirectory() stringByAppendingFormat:@"%@/%@", IMAGE_CACHE_FOLDER, fUrl];
 }
 
 + (void)getImage:(NSString *)url callback:(ImageDone)callback {
+                            //从储存器获取图像
     UIImage *image = [self getImageFromMem:url];
     if (!image) {
+            // 从磁盘中取出图片
         [self getImageFromDisk:url callback:^(NSString *rUrl, UIImage *image) {
             if (image) {
                 if (callback) {
                     callback(url, image);
                 }
-            } else {
+            } else {//从网络请求图片
                 [self getImageFromNetwork:url callback:^(NSString *rUrl, UIImage *image) {
                     if (callback) {
                         callback(url, image);
@@ -63,7 +65,7 @@ static NSMutableDictionary *cache;
         callback(url, image);
     }
 }
-
+//从内存获取图片
 + (UIImage *)getImageFromMem:(NSString *)url {
     if (cache && cache.count) {
         NSString *fUrl = [url URLEncodedString];
@@ -77,7 +79,7 @@ static NSMutableDictionary *cache;
     [self saveImageToMem:image withUrl:url];
     return image;
 }
-
+//从磁盘获取图片
 + (void)getImageFromDisk:(NSString *)url callback:(ImageDone)callback {
     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     dispatch_async(queue, ^{
@@ -90,7 +92,7 @@ static NSMutableDictionary *cache;
         });
     });
 }
-
+//从网络获取图像
 + (void)getImageFromNetwork:(NSString *)url callback:(ImageDone)callback {
     ImageTask *task = [[ImageTask alloc] initGetImage:url];
     task.logicCallbackBlock = ^(bool succeeded, id userInfo) {
@@ -99,8 +101,7 @@ static NSMutableDictionary *cache;
             [self saveImage:img withUrl:url sync:NO];
             
             NSLog(@"gallery pic is %@",[userInfo objectForKey:@"image"]);
-            
-            
+
             if (callback) {
                 callback(url, img);
             }
@@ -113,7 +114,7 @@ static NSMutableDictionary *cache;
     [TaskQueue addTaskToQueue:task];
     [task release];
 }
-
+//保存图片和Url 到内存
 + (void)saveImageToMem:(UIImage *)image withUrl:(NSString *)url {
     if (image.size.width*image.size.height < IMAGE_SIZE_THREADHOLD) {
         if (cache.count < IMAGE_CAHCE_MAX) {
@@ -127,12 +128,11 @@ static NSMutableDictionary *cache;
             @synchronized([IMG class]) {
                 [cache setObject:image forKey:fUrl];
                 //chulijian
-             //   NSLog(@"image is exist then fUrl:%@",fUrl);
+                NSLog(@"image is exist then fUrl:%@",fUrl);
              //   NSLog(@"image is exist then url:%@",url);
 
               //  NSLog(@"loadingImage is%@",image);
-                
-                
+
                 NSData* imageData = [[NSData alloc]initWithContentsOfURL:[NSURL URLWithString:url]];
                 UIImage* imagePp = [[UIImage alloc] initWithData:imageData];
                 CGSize newSize = CGSizeMake(100, 100);
@@ -184,7 +184,7 @@ static NSMutableDictionary *cache;
         }
     }
 }
-
+// 保存某个url的图片，会根据图片的大小自动判断是否存入缓存
 + (void)saveImage:(UIImage *)image withUrl:(NSString *)url sync:(bool)sync {
     if (!cache) {
         @synchronized([IMG class]) {

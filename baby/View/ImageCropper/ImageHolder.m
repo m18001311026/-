@@ -249,15 +249,17 @@
     
     return zoomRect;
 }
-
+//单点击手势识别
 - (void)singleTap:(UIGestureRecognizer *)gestureRecognizer {
 //    [self removeFromSuperview];
         if (_holderDelegate && [_holderDelegate
 respondsToSelector:@selector(imageHolder:singleTapAtPoint:)]) {
         [_holderDelegate imageHolder:self singleTapAtPoint:[gestureRecognizer locationInView:imageView]];
     }
+    
+    
 }
-
+//单机手势识别
 - (void)doubleTap:(UIGestureRecognizer *)gestureRecognizer {
     float newScale = self.zoomScale * kZoomScale;
     
@@ -277,6 +279,7 @@ respondsToSelector:@selector(imageHolder:singleTapAtPoint:)]) {
 
 
 #pragma mark uiscrollview delegate
+
 - (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
 	return imageView;
 }

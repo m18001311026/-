@@ -10,6 +10,10 @@
 #import "MJPhotoLoadingView.h"
 #import "UIImageView+WebCache.h"
 #import <QuartzCore/QuartzCore.h>
+#import "ImageDetailView.h"
+#import "ImageHolder.h"
+#import "ImageView.h"
+
 
 @interface MJPhotoView ()
 {
@@ -28,6 +32,7 @@
 		// 图片
 		_imageView = [[UIImageView alloc] init];
 		_imageView.contentMode = UIViewContentModeScaleAspectFit;
+        
 		[self addSubview:_imageView];
         
         // 进度条
@@ -72,9 +77,10 @@
         if (![_photo.url.absoluteString hasSuffix:@"gif"]) {
             __unsafe_unretained MJPhotoView *photoView = self;
             __unsafe_unretained MJPhoto *photo = _photo;
-            [_imageView sd_setImageWithURL:_photo.url placeholderImage:_photo.placeholder options:SDWebImageRetryFailed|SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
+            [_imageView sd_setImageWithURL:_photo.url placeholderImage:_photo.placeholder options:SDWebImageRetryFailed|SDWebImageLowPriority completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL)
+            {
                 photo.image = image;
-                
+            
                 // 调整frame参数
                 [photoView adjustFrame];
             }];

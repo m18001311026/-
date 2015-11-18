@@ -135,11 +135,11 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    UIButton *shoppingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    shoppingBtn.frame = CGRectMake(kScreen_width - 40, 7, 30, 30);
-    [shoppingBtn setImage:[UIImage imageNamed:@"shopping.png"] forState:UIControlStateNormal];
-    [shoppingBtn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
-//    [bbTopbar addSubview:shoppingBtn];2 
+//    UIButton *shoppingBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+//    shoppingBtn.frame = CGRectMake(kScreen_width - 40, 7, 30, 30);
+//    [shoppingBtn setImage:[UIImage imageNamed:@"shopping.png"] forState:UIControlStateNormal];
+//    [shoppingBtn addTarget:self action:@selector(btnAction) forControlEvents:UIControlEventTouchUpInside];
+//    [bbTopbar addSubview:shoppingBtn];2
 }
 
 - (void)viewWillAppear:(BOOL)animated

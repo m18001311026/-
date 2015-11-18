@@ -439,7 +439,7 @@
     
     // Configure the view for the selected state
 }
-
+//复用视图
 - (ImageView *)viewForReuse
 {
     ImageView *view = nil;
@@ -461,7 +461,7 @@
     }
     return view;
 }
-
+//最新的滚动视图
 - (void)updateScrollView
 {
     for (ImageView *v in pictureViews)
@@ -473,8 +473,9 @@
     
     [pictures removeAllObjects];
     
-    //prepare data
+    //prepare data  z准备数据
     //chulijianupdateScrollView
+    
     NSArray *gPictures = [GalleryPictureLK getPicturesForGallery:self.galleryId];
     [pictures addObjectsFromArray:gPictures];
     
@@ -487,7 +488,7 @@
      //   view.frame = CGRectMake(218*i, 0, self.widthChu,self.heightChu );
      //   NSLog(@"宽是%f,高是%f",self.widthChu,self.heightChu);
         
-      
+      //铺图
        view.frame = CGRectMake(218*i, 0, 218,130 );
 
         //now 218 130
@@ -513,7 +514,7 @@
     }
     
 }
-
+//加载完成的画廊
 - (void)loadFullGallery
 {
     NSArray *gPictures = [GalleryPictureLK getPicturesForGallery:self.galleryId];
@@ -534,7 +535,7 @@
     }
     
 }
-
+//喜欢的画
 - (void)likeGallery
 {
     if ([[ConfigManager me] getSession]) {
@@ -578,7 +579,7 @@
         [alert release];
     }
 }
-
+//分享画
 - (void)shareGallery
 {
     if (self.delegate
@@ -593,7 +594,7 @@
         [self.delegate deleteGallery:self.galleryId];
     }
 }
-
+//新的布局
 - (void)updateLayout
 {
     user.galleryId = self.galleryId;
@@ -618,7 +619,7 @@
     
     CGSize textSize = [self.gallery.content sizeWithFont:[UIFont systemFontOfSize:16]forWidth:300 lineBreakMode:NSLineBreakByWordWrapping];
     topic.numberOfLines=0;
-    topic.lineBreakMode=UILineBreakModeCharacterWrap;
+//    topic.lineBreakMode=UILineBreakModeCharacterWrap;
     topic.text = self.gallery.content;
     
     //NSLog(@"wwwwww%@",topic.text);

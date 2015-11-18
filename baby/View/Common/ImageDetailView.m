@@ -195,5 +195,4 @@
 	imageView.center = CGPointMake(holder.contentSize.width * 0.5 + offsetX,
 							 holder.contentSize.height * 0.5 + offsetY);
 }
-
 @end

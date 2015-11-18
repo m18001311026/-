@@ -21,7 +21,8 @@
 - (void)dealloc {
 
 }
-
+//初始化新的图片，声音，长度
+//图片的压缩
 - (id)initNewPicture:(UIImage *)image voice:(NSData *)voice length:(int)voiceLength {
     self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
     if (self) {

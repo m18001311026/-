@@ -26,7 +26,7 @@
     }
     return map;
 }
-
+//获取照片
 + (NSArray *)getPicturesForGallery:(long)galleryId {
     return [[MemContainer me] getObjects:[NSPredicate predicateWithFormat:@"galleryId = %ld", galleryId]
                                    clazz:[GalleryPictureLK class]

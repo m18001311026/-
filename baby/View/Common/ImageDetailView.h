@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ImageDetailView : UIView <UIScrollViewDelegate> {
+@interface ImageDetailView : UIView <UIScrollViewDelegate,UITableViewDelegate> {
     UIScrollView *holder;
 	UIImageView *imageView;
     UIActivityIndicatorView *indicator;

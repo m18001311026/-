@@ -35,7 +35,7 @@ static const short _base64DecodingTable[256] = {
 };
 
 @implementation NSString (Extra)
-
+//网址编码的字符串
 - (NSString *)URLEncodedString {
     NSString *result = (NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
                                                                            (CFStringRef)self,
@@ -45,7 +45,7 @@ static const short _base64DecodingTable[256] = {
     [result autorelease];
 	return result;
 }
-
+//解码字符串
 - (NSString*)URLDecodedString {
 	NSString *result = (NSString *)CFURLCreateStringByReplacingPercentEscapesUsingEncoding(kCFAllocatorDefault,
 																						   (CFStringRef)self,
