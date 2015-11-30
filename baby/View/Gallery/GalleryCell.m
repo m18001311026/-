@@ -28,7 +28,10 @@
 //-------
 #define Chu 7
 
-@interface GalleryCell()
+#import "MJPhoto.h"
+#import "MJPhotoBrowser.h"
+
+@interface GalleryCell()<MJPhotoBrowserDelegate>
 {
     UIView *bg;
     UIButton * attentionBtnHH;
@@ -688,21 +691,41 @@
     
     ImageDetailView *detail = [[ImageDetailView alloc] initWithFrame:delegate.window.bounds];
     detail.backgroundColor = [Shared bbRealWhite];
-    
+     NSMutableArray *photos = [NSMutableArray array];
     for (UIView *view in [galleryHolder subviews]) {
         if ([view isKindOfClass:[ImageView class]]) {
             int page = (int)((view.frame.origin.x / galleryHolder.bounds.size.width));
-            if (page == paging.currentPage) {
+           // if (page == paging.currentPage) {
                 GalleryPictureLK *lk = [pictures objectAtIndex:page];
                 Picture *pic = [Picture getPictureWithId:lk.pictureId];
-                [detail setImagePath:pic.imageBig];
+               // [detail setImagePath:pic.imageBig];
 //                [detail setImage:((ImageView *)view).image];
-            }
+                MJPhoto *photo = [[MJPhoto alloc] init];
+                photo.url = [NSURL URLWithString:/*self.topicObject.image_url[idx]*/pic.imageBig];
+                photo.srcImageView = /*cell.photoImageView*/(UIImageView*)view;
+                [photos addObject:photo];
+           // }
         }
     }
+   
+//    NSArray *visibleCell = [self.photoCollectionView visibleCells];
+//    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"indexPath" ascending:YES];
     
-    [delegate.window addSubview:detail];
-    [detail release];
+//    visibleCell = [visibleCell sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+//    [visibleCell enumerateObjectsUsingBlock:^(CWPhotoCollectionViewCell *cell, NSUInteger idx, BOOL *stop) {
+//        MJPhoto *photo = [[MJPhoto alloc] init];
+//        photo.url = [NSURL URLWithString:self.topicObject.image_url[idx]];
+//        photo.srcImageView = cell.photoImageView;
+//        [photos addObject:photo];
+//    }];
+    
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
+    browser.currentPhotoIndex = /*indexPath.row*/paging.currentPage;
+    browser.photos = photos;
+    browser.delegate =self;
+    [browser show];
+//    [delegate.window addSubview:detail];
+//    [detail release];
 }
 
 
@@ -727,5 +750,20 @@
     }
 }
 
+- (void)photoBrowser:(MJPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index{
 
+//        int newpage = (int)((galleryHolder.contentOffset.x / galleryHolder.bounds.size.width));
+        if (paging.currentPage != index) {
+            [self.playDelegate playVoiceForGallery:self.galleryId atIndex:index];
+            paging.currentPage = index;
+            user.page = paging.currentPage;
+            self.currentIndex = paging.currentPage;
+            
+            GalleryPictureLK *lk = [pictures objectAtIndex:user.page];
+            Picture *pic = [Picture getPictureWithId:lk.pictureId];
+            user.voiceLength = pic.voiceLength;
+            
+        }
+
+}
 @end

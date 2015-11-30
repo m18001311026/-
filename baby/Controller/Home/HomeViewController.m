@@ -425,16 +425,16 @@
 
     self.pictureIndex = page;
 //上传 播放
-//    if (self.playingGalleryId == galleryId
+    if (self.playingGalleryId == galleryId
     
-//        && self.isPlayingComment == isComment) {
-////        self.playingGalleryId = 0;
-////        self.isPlayingComment = isComment;
-////        self.playingGalleryId = galleryId;
-//    } else {
+        && self.isPlayingComment == isComment) {
+        self.playingGalleryId = 0;
         self.isPlayingComment = isComment;
         self.playingGalleryId = galleryId;
-//    }
+    } else {
+        self.isPlayingComment = isComment;
+        self.playingGalleryId = galleryId;
+    }
     //change by
     
     [galleryTable reloadData];
