@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+//基本任务
 typedef enum {
     Normal,
     Executing,

@@ -626,7 +626,7 @@
     if (g) {
         UIImage *local = [IMG getImageFromDisk:g.cover];
         if (local) {
-            [[ShareManager me] showShareMenuWithTitle:@"宝贝计画"
+            [[ShareManager me] showShareMenuWithTitle:@"绘本宝"
                                               content:g.content
                                                 image:local
                                               pageUrl:[NSString stringWithFormat:GALLERY_PAGE, galleryId]
@@ -636,7 +636,7 @@
         else
         
         {
-            [[ShareManager me] showShareMenuWithTitle:@"宝贝计画"
+            [[ShareManager me] showShareMenuWithTitle:@"绘本宝"
                                               content:g.content
                                              imageUrl:g.cover
                                               pageUrl:[NSString stringWithFormat:GALLERY_PAGE, galleryId]

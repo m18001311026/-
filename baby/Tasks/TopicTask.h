@@ -7,7 +7,7 @@
 //
 
 #import "BBNetworkTask.h"
-
+//热门
 @interface TopicTask : BBNetworkTask
 
 - (id)initTopicListAtPage:(int)page count:(int)count;

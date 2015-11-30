@@ -121,10 +121,10 @@
            forControlEvents: UIControlEventTouchUpInside|UIControlEventTouchCancel];
         [voiceBtn addTarget:self action:@selector(cancelRecord)
            forControlEvents:UIControlEventTouchUpOutside];
-//        [voiceBtn addTarget:self action:@selector(showDelBtn)
-//           forControlEvents:UIControlEventTouchDragOutside];
-//        [voiceBtn addTarget:self action:@selector(dismissDelBtn)
-//           forControlEvents:UIControlEventTouchDragInside];
+        [voiceBtn addTarget:self action:@selector(showDelBtn)
+           forControlEvents:UIControlEventTouchDragOutside];
+        [voiceBtn addTarget:self action:@selector(dismissDelBtn)
+           forControlEvents:UIControlEventTouchDragInside];
         [voiceBtn retain];
         [self addSubview:voiceBtn];
         

@@ -293,26 +293,26 @@ NavigationControl *ctr;
 }
 
 // 内置更新
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    NSError *error;
-    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-    NSDictionary *appInfo = (NSDictionary *)json;
-    
-    NSString *version = [[[appInfo objectForKey:@"results"]objectAtIndex:0]objectForKey:@"version"];
-    NSString *version1 = [ConfigManager getCurrentVersion];
-    
-    if ([self updateFlagWithAPPversion:version1 AndSerVersion:version]) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"升级提示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alertView show];
-    }
+//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+//    NSError *error;
+//    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+//    NSDictionary *appInfo = (NSDictionary *)json;
+//    
+//    NSString *version = [[[appInfo objectForKey:@"results"]objectAtIndex:0]objectForKey:@"version"];
+//    NSString *version1 = [ConfigManager getCurrentVersion];
+//    
+//    if ([self updateFlagWithAPPversion:version1 AndSerVersion:version]) {
+//        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"升级提示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//        [alertView show];
+//    }
+//
+//}
 
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id873922966"]];
-    }
-}
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (buttonIndex == 1) {
+//        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id873922966"]];
+//    }
+//}
 
 
 

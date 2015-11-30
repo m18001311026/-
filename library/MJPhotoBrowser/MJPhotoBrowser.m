@@ -257,6 +257,9 @@
 {
     _currentPhotoIndex = _photoScrollView.contentOffset.x / _photoScrollView.frame.size.width;
     _toolbar.currentPhotoIndex = _currentPhotoIndex;
+    if ([self.delegate respondsToSelector:@selector(photoBrowser:didChangedToPageAtIndex:)]) {
+        [self.delegate photoBrowser:self didChangedToPageAtIndex:_currentPhotoIndex];
+    }
 }
 
 #pragma mark - UIScrollView Delegate

@@ -52,7 +52,7 @@
         [self addGestureRecognizer:doubleTap];
         [doubleTap release];
         
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(singleTap:)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(scrollViewTapped:)];
         tap.cancelsTouchesInView = NO;
         [tap requireGestureRecognizerToFail:doubleTap];
         [self addGestureRecognizer:tap];
@@ -250,11 +250,11 @@
     return zoomRect;
 }
 //单点击手势识别
-- (void)singleTap:(UIGestureRecognizer *)gestureRecognizer {
+- (void)scrollViewTapped:(UITapGestureRecognizer *)tap {
 //    [self removeFromSuperview];
         if (_holderDelegate && [_holderDelegate
 respondsToSelector:@selector(imageHolder:singleTapAtPoint:)]) {
-        [_holderDelegate imageHolder:self singleTapAtPoint:[gestureRecognizer locationInView:imageView]];
+        [_holderDelegate imageHolder:self singleTapAtPoint:[tap locationInView:imageView]];
     }
     
     

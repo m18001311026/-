@@ -78,25 +78,25 @@ static NSDateFormatter *formatter = nil;
 	if (minute < 60) {
         if (minute <1) return @"刚刚";
         
-		return [NSString stringWithFormat:@"%d 分钟前", (minute<=1? 1: minute)];
+		return [NSString stringWithFormat:@"%ld 分钟前", (long)(minute<=1? 1: minute)];
 	} else {
         NSInteger hour = (minute / 60);
         if (hour < 24) {
-            return [NSString stringWithFormat:@"%d 小时前", (hour<=1? 1: hour)];
+            return [NSString stringWithFormat:@"%ld 小时前", (long)(hour<=1? 1: hour)];
         } else {
             NSInteger day = (hour / 24);
             if (day < 7) {
-                return [NSString stringWithFormat:@"%d 天前", (day<=1? 1: day)];
+                return [NSString stringWithFormat:@"%ld 天前", (long)(day<=1? 1: day)];
             } else if ( day >= 7 && day < 30) {
                 NSInteger week = (day / 7);
-                return [NSString stringWithFormat:@"%d 周前", (week<=1? 1: week)];
+                return [NSString stringWithFormat:@"%ld 周前", (long)(week<=1? 1: week)];
             } else {
                 NSInteger month = (day / 30);
                 if (month < 12) {
-                    return [NSString stringWithFormat:@"%d 月前", (month<=1? 1: month)];
+                    return [NSString stringWithFormat:@"%ld 月前", (long)(month<=1? 1: month)];
                 } else {
                     NSInteger year = (month / 12);
-                    return [NSString stringWithFormat:@"%d 年前", (year<=1? 1: year)];
+                    return [NSString stringWithFormat:@"%ld 年前", (long)(year<=1? 1: year)];
                 }
             }
         }

@@ -11,7 +11,7 @@
 
 @implementation Topic
 
-@dynamic _id, icon, content, hot, createTime, priority;
+@dynamic _id, icon, content, hot, createTime, priority , type;
 
 + (NSDictionary *)mapping {
     static NSDictionary *map = nil;

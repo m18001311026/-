@@ -11,6 +11,7 @@
 @implementation ImageTask
 
 - (id)initGetImage:(NSString *)url {
+    
     self = [super initWithUrl:[url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding] method:GET];
     if (self) {
         self.rawData = YES;

@@ -15,7 +15,6 @@
 #import "CartViewController.h"
 
 
-
 #import "UIButtonExtra.h"
 #import "ConfigManager.h"
 #import "TabbarController.h"
@@ -64,14 +63,14 @@
         self.view.backgroundColor = [UIColor whiteColor];
 
         galleryType = [[SimpleSegment alloc] initWithFrame:CGRectMake(5, 5, 310, 29)
-                                                    titles:@[@"绘本", @"单幅画"]];
+                                                    titles:@[@"经典绘本", @"原创绘本"]];
         galleryType.selectedTextColor = [UIColor whiteColor];
-      // galleryType.selectedBackgoundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
-         galleryType.selectedBackgoundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
+
+        galleryType.selectedBackgoundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         galleryType.normalTextColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         galleryType.normalBackgroundColor = [UIColor whiteColor];
-      // galleryType.borderColor = [Shared bbYellow];
-       galleryType.borderColor =[UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
+
+        galleryType.borderColor =[UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         galleryType.delegate = self;
         galleryType.layer.cornerRadius = 2;
         [galleryType updateLayout];
@@ -86,7 +85,7 @@
         [self.view addSubview:galleryTable];
         [galleryTable release];
         
-        [self setViewTitle:@"宝贝计画" ];
+        [self setViewTitle:@"绘本宝" ];
         
 
         bbTopbar.backgroundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
@@ -195,6 +194,8 @@
     currentPage = 1;
     galleryTable.isRefreshing = YES;
 //    self.playingGalleryId = 0;
+    //type类型
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",index] forKey:@"glSegmentIndex"];
     [self loadGallery];
 }
 
@@ -372,7 +373,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 39;
 }
-
+//画廊细节
 - (void)loadGalleryDetail {
     NSArray *cells = [galleryTable visibleCells];
     for (GalleryCell *cell in cells) {
@@ -425,16 +426,16 @@
 
     self.pictureIndex = page;
 //上传 播放
-//    if (self.playingGalleryId == galleryId
+    if (self.playingGalleryId == galleryId
     
-//        && self.isPlayingComment == isComment) {
-////        self.playingGalleryId = 0;
-////        self.isPlayingComment = isComment;
-////        self.playingGalleryId = galleryId;
-//    } else {
+        && self.isPlayingComment == isComment) {
+        self.playingGalleryId = 0;
         self.isPlayingComment = isComment;
         self.playingGalleryId = galleryId;
-//    }
+    } else {
+        self.isPlayingComment = isComment;
+        self.playingGalleryId = galleryId;
+    }
     //change by
     
     [galleryTable reloadData];

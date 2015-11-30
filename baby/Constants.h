@@ -8,7 +8,7 @@
 //#define SERVERURL @"http://115.28.136.139:8081/cms/service"
 //下面是上线使用
 
-#define SERVERURL @"http://115.28.136.139:8081/cms/service"
+#define SERVERURL @"http://115.28.136.139:8080/newbb/service"
 
 
 //#define SERVERURL @"http://192.168.0.3:8080/babyweb2/service"
@@ -16,7 +16,7 @@
 //#define SERVERUR @"http://115.28.136.139:8083/babyweb/service"
 //下面是上线使用
 
-#define SERVERUR @"http://115.28.136.139:8081/cms/service"
+#define SERVERUR @"http://115.28.136.139:8080/newbb/service"
 
 
 //#define SERVERURL @"http://192.168.1.5:8080/baobei/service"

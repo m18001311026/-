@@ -16,6 +16,7 @@
 @property (nonatomic, retain) NSDate *createTime;
 @property (nonatomic, assign) int hot;
 @property (nonatomic, assign) int priority;
+@property (nonatomic, assign) int type;
 
 + (Topic *)getTopicWithId:(long)_id;
 

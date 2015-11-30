@@ -7,7 +7,7 @@
 //
 
 #import "BBNetworkTask.h"
-
+//活动
 @interface ActivityTask : BBNetworkTask
 
 - (id)initAvctivityList;

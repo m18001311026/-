@@ -28,7 +28,10 @@
 //-------
 #define Chu 7
 
-@interface GalleryCell()
+#import "MJPhoto.h"
+#import "MJPhotoBrowser.h"
+
+@interface GalleryCell()<MJPhotoBrowserDelegate>
 {
     UIView *bg;
     UIButton * attentionBtnHH;
@@ -577,6 +580,7 @@
                                               otherButtonTitles:@"删除", nil];
         [alert show];
         [alert release];
+        
     }
 }
 //分享画
@@ -686,23 +690,34 @@
 - (void)scrollViewTaped:(UITapGestureRecognizer *)tap
 {
     
-    ImageDetailView *detail = [[ImageDetailView alloc] initWithFrame:delegate.window.bounds];
-    detail.backgroundColor = [Shared bbRealWhite];
-    
+//    ImageDetailView *detail = [[ImageDetailView alloc] initWithFrame:delegate.window.bounds];
+//    detail.backgroundColor = [Shared bbRealWhite];
+    //用来装配置好的图片对象
+    NSMutableArray *photos = [NSMutableArray array];
+    //对UIScrollView进行遍历
     for (UIView *view in [galleryHolder subviews]) {
+        //如果这个View是Imageview
         if ([view isKindOfClass:[ImageView class]]) {
+            //
             int page = (int)((view.frame.origin.x / galleryHolder.bounds.size.width));
-            if (page == paging.currentPage) {
-                GalleryPictureLK *lk = [pictures objectAtIndex:page];
-                Picture *pic = [Picture getPictureWithId:lk.pictureId];
-                [detail setImagePath:pic.imageBig];
-//                [detail setImage:((ImageView *)view).image];
-            }
+            GalleryPictureLK *lk =  [pictures objectAtIndex:page];
+            Picture *pic = [Picture getPictureWithId:lk.pictureId];
+            
+            MJPhoto *photo = [[MJPhoto alloc]init];
+            photo.url = [NSURL URLWithString:pic.imageBig];
+            photo.srcImageView = (UIImageView *)view;
+
+            [photos addObject:photo];
+            
         }
     }
+
+    MJPhotoBrowser *browser = [[MJPhotoBrowser alloc] init];
     
-    [delegate.window addSubview:detail];
-    [detail release];
+    browser.currentPhotoIndex =paging.currentPage;
+    browser.photos = photos;
+    browser.delegate =self;
+    [browser show];
 }
 
 
@@ -727,5 +742,20 @@
     }
 }
 
+- (void)photoBrowser:(MJPhotoBrowser *)photoBrowser didChangedToPageAtIndex:(NSUInteger)index{
 
+//        int newpage = (int)((galleryHolder.contentOffset.x / galleryHolder.bounds.size.width));
+        if (paging.currentPage != index) {
+            [self.playDelegate playVoiceForGallery:self.galleryId atIndex:index];
+            paging.currentPage = index;
+            user.page = paging.currentPage;
+            self.currentIndex = paging.currentPage;
+            
+            GalleryPictureLK *lk = [pictures objectAtIndex:user.page];
+            Picture *pic = [Picture getPictureWithId:lk.pictureId];
+            user.voiceLength = pic.voiceLength;
+            
+        }
+
+}
 @end

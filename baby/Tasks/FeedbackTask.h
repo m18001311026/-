@@ -7,7 +7,7 @@
 //
 
 #import "BBNetworkTask.h"
-
+//预约
 @interface FeedbackTask : BBNetworkTask
 
 - (id)initFeedback:(NSString *)content;

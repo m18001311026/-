@@ -101,7 +101,7 @@
     }
     return self;
 }
-
+//
 - (id)initWithImage:(UIImage *)image root:(NewGalleryViewController *)root {
     self = [self initWithImage:image];
     if (self) {
@@ -221,7 +221,7 @@
         
         NSLog(@"unKnown img is %@",showImage.image);
         
-        
+        //回调
         task.logicCallbackBlock = ^(bool succeeded, id userInfo)
         {
             

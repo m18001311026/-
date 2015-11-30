@@ -99,9 +99,9 @@
         shareView.layer.borderColor = [Shared bbLightGray].CGColor;
         shareView.layer.borderWidth = 1;
         [shareView release];
-        
+        //图片列表
         pictureList = [[NSMutableArray alloc] init];
-        //查看图片列表
+        //访问列表
         thumbViewList = [[NSMutableArray alloc] init];
         
         delegate.window.backgroundColor = [UIColor blackColor];
@@ -150,6 +150,7 @@
     + (pictureList.count < self.maxPictureCount? PICTURE_WIDTH + PICTURE_MARGIN: 0);
     
     pictureHolder.contentSize = CGSizeMake(width, PICTURE_WIDTH + 2*PICTURE_MARGIN);
+    
     for (int i = 0; i < pictureList.count; i ++) {
         Picture *pic = (Picture *)[pictureList objectAtIndex:i];
         
@@ -211,6 +212,7 @@
 }
 //判断图片列表 是否有图片
 - (void)postGallery {
+    
     if (!pictureList || pictureList.count == 0) {
         [UI showAlert:@"请先增加图片"];
         return;
@@ -224,7 +226,8 @@
     }
     PostTask *task = [[PostTask alloc] initNewGallery:galleryMapArray
                                               content:introView.text
-                                                 city:0];
+                                                 city:0
+                      ];
     task.logicCallbackBlock = ^(bool succeeded, id userInfo) {
         if (succeeded) {
             [UI showAlert:@"图片集添加成功"];
@@ -232,7 +235,9 @@
             
             Picture *cover = nil;
             if (pictureList && pictureList.count > 0) {
+                
                 Picture *pic = [pictureList objectAtIndex:0];
+                
                 cover = [Picture getPictureWithId:pic._id];
             }
             
@@ -246,21 +251,20 @@
             long galleryId = [[userInfo objectForKey:@"galleryId"] longValue];
 
             // topicId
-            
-            PostTask *task1 = [[PostTask alloc] initNewGallery:[NSString stringWithFormat:@"%ld", galleryId] topicId:[NSString stringWithFormat:@"%ld", self.topic._id]];
-            task1.logicCallbackBlock = ^(bool succeeded, id userInfo) {
-                
-                NSLog(@"%@", userInfo);
-                
-            };
-            [TaskQueue addTaskToQueue:task1];
-            [task1 release];
-            //#define GALLERY_PAGE @"http://115.28.136.139:8081/babyweb/g4.jsp?id=%ld"
+//            
+//            PostTask *task1 = [[PostTask alloc] initNewGallery:[NSString stringWithFormat:@"%ld", galleryId] topicId:[NSString stringWithFormat:@"%ld", self.topic._id]];
+//            task1.logicCallbackBlock = ^(bool succeeded, id userInfo) {
+//                
+//                NSLog(@"%@", userInfo);
+//                
+//            };
+//            [TaskQueue addTaskToQueue:task1];
+//            [task1 release];
 
             
             [[ShareManager me] post:[shareView enableWeixin]? ShareTypeWeixiTimeline: ShareTypeAny
                             content:introView.text
-                              title:@"宝贝计画"
+                              title:@"绘本宝"
                            imageUrl:cover.imageMid
                             pageUrl:[NSString stringWithFormat:GALLERY_PAGE, galleryId]
                            soundUrl:cover.voice
@@ -268,7 +272,7 @@
                                    
                                    [[ShareManager me] post:[shareView enableQzone]? ShareTypeQQSpace: ShareTypeAny
                                                    content:introView.text
-                                                     title:@"宝贝计画"
+                                                     title:@"绘本宝"
                                                   imageUrl:cover.imageMid
                                                    pageUrl:[NSString stringWithFormat:GALLERY_PAGE, galleryId]
                                                   soundUrl:cover.voice

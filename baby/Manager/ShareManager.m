@@ -132,10 +132,10 @@ static ShareManager *_me = nil;
     [delegate.window bringSubviewToFront:delegate.window.rootViewController.view];
     
     if (![content title].length) {
-        [content setTitle:@"宝贝计画"];
+        [content setTitle:@"绘本宝"];
     }
     if (![content content].length) {
-        [content setContent:@"宝贝计画"];
+        [content setContent:@"绘本宝"];
     }
     if ([content url].length)
     {
@@ -471,9 +471,9 @@ static ShareManager *_me = nil;
     
     //在授权页面中添加关注官方微博
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"宝贝计画"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"绘本宝"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"宝贝计画"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"绘本宝"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     

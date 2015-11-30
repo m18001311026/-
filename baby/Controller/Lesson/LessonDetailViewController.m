@@ -123,12 +123,12 @@
         UIImage *local = [IMG getImageFromDisk:lesson.cover];
         NSString *url = [NSString stringWithFormat:LESSON_PAGE, lesson._id];
         if (local) {
-            [[ShareManager me] showShareMenuWithTitle:@"宝贝计画"
+            [[ShareManager me] showShareMenuWithTitle:@"绘本宝"
                                               content:lesson.title
                                                 image:local
                                               pageUrl:url];
         } else {
-            [[ShareManager me] showShareMenuWithTitle:@"宝贝计画"
+            [[ShareManager me] showShareMenuWithTitle:@"绘本宝"
                                               content:lesson.title
                                              imageUrl:lesson.cover
                                               pageUrl:url];

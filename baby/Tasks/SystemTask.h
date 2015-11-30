@@ -7,7 +7,7 @@
 //
 
 #import "BBNetworkTask.h"
-
+//系统任务
 @interface SystemTask : BBNetworkTask
 
 - (id)initGetVersion;

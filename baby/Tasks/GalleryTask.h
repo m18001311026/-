@@ -10,7 +10,7 @@
 
 @interface GalleryTask : BBNetworkTask
 
-- (id)initGalleryList:(bool)singlePage page:(int)page count:(int)count;
+- (id)initGalleryList:(bool)type page:(int)page count:(int)count ;
 - (id)initRecommendGalleryList;
 - (id)initTopicGalleryList:(long)topicId page:(int)page count:(int)count;
 - (id)initCityGalleryList:(int)cityId page:(int)page count:(int)count;

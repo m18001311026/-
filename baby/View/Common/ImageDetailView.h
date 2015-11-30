@@ -12,6 +12,9 @@
     UIScrollView *holder;
 	UIImageView *imageView;
     UIActivityIndicatorView *indicator;
+
+    
+    
 }
 
 - (void)setImagePath:(NSString *)imagePath;

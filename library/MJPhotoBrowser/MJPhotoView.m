@@ -10,9 +10,7 @@
 #import "MJPhotoLoadingView.h"
 #import "UIImageView+WebCache.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ImageDetailView.h"
-#import "ImageHolder.h"
-#import "ImageView.h"
+
 
 
 @interface MJPhotoView ()

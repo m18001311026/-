@@ -34,7 +34,9 @@
             [self addParameter:@"voice" value:voice fileName:@"voice.mp3"];
             [self addParameter:@"voice_length" value:[NSString stringWithFormat:@"%d", voiceLength]];
         }
+        
         WEAKSELF
+        
         self.responseCallbackBlock = ^(bool succeeded, id userInfo) {
             if (succeeded) {
                 NSDictionary *dict = (NSDictionary *)userInfo;
@@ -49,7 +51,9 @@
 
 - (id)initNewGallery:(NSArray *)pictures
              content:(NSString *)content
-                city:(int)city {
+                city:(int)city
+//                type:(int)type
+{
     if (!pictures) {
         return nil;
     }
@@ -65,8 +69,19 @@
         if (city > 0) {
             [galleryJson setValue:[NSString stringWithFormat:@"%d", city] forKey:@"cityId"];
         }
+//        if (type) {
+        NSString * type = [[NSUserDefaults standardUserDefaults] objectForKey:@"glSegmentIndex"];
+        if (type == nil) {
+            type = @"0";
+        }
+//        if ([type isEqualToString:@"1"]) {
+//            type = @"0";
+//        }else{
+//            type = @"1";
+//        }
+            [galleryJson setValue:type forKey:@"type"];
+//        }
         [galleryJson setValue:pictures forKey:@"pictures"];
-
         
         NSString *json = nil;
         NSError *error;

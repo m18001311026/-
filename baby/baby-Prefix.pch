@@ -27,6 +27,7 @@
 
     extern AppDelegate *delegate;
     extern NavigationControl *ctr;
+    extern int type;
 
 #endif
 

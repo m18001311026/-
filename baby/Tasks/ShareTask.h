@@ -7,7 +7,7 @@
 //
 
 #import "BBNetworkTask.h"
-
+//分享任务
 @interface ShareTask : BBNetworkTask
 
 - (id)initContactMatch:(NSString *)contacts;
