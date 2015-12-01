@@ -250,16 +250,16 @@
             
             long galleryId = [[userInfo objectForKey:@"galleryId"] longValue];
 
-            // topicId
+//             topicId
 //            
-//            PostTask *task1 = [[PostTask alloc] initNewGallery:[NSString stringWithFormat:@"%ld", galleryId] topicId:[NSString stringWithFormat:@"%ld", self.topic._id]];
-//            task1.logicCallbackBlock = ^(bool succeeded, id userInfo) {
-//                
-//                NSLog(@"%@", userInfo);
-//                
-//            };
-//            [TaskQueue addTaskToQueue:task1];
-//            [task1 release];
+            PostTask *task1 = [[PostTask alloc] initNewGallery:[NSString stringWithFormat:@"%ld", galleryId] topicId:[NSString stringWithFormat:@"%ld", self.topic._id]];
+            task1.logicCallbackBlock = ^(bool succeeded, id userInfo) {
+                
+                NSLog(@"%@", userInfo);
+                
+            };
+            [TaskQueue addTaskToQueue:task1];
+            [task1 release];
 
             
             [[ShareManager me] post:[shareView enableWeixin]? ShareTypeWeixiTimeline: ShareTypeAny

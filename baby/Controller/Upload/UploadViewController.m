@@ -39,7 +39,7 @@
         multiBtn.backgroundColor = [UIColor whiteColor];
         [multiBtn setTitleColor:[UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1] forState:UIControlStateNormal];
         [multiBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        [multiBtn setTitle:@"原创绘本" forState:UIControlStateNormal];
+        [multiBtn setTitle:@"经典绘本" forState:UIControlStateNormal];
         multiBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [multiBtn addTarget:self action:@selector(newMultiPicture) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:multiBtn];
@@ -53,7 +53,7 @@
         singleBtn.backgroundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         [singleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [singleBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        [singleBtn setTitle:@"经典绘本" forState:UIControlStateNormal];
+        [singleBtn setTitle:@"原创绘本" forState:UIControlStateNormal];
         singleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [singleBtn addTarget:self action:@selector(newSinglePicture) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:singleBtn];
@@ -80,12 +80,10 @@
 }
 
 - (void)newSinglePicture {
-//    NewGalleryViewController *ngVC = [[NewGalleryViewController alloc] init];
-//    [ctr pushViewController:ngVC animation:ViewSwitchAnimationBounce];
-//    [ngVC release];
+
         NewGalleryViewController *ngVC = [[NewGalleryViewController alloc] init];
     
-//        ngVC.maxPictureCount = 25;
+        ngVC.maxPictureCount = 20;
     
     
         [ctr pushViewController:ngVC animation:ViewSwitchAnimationNone finished:^{
@@ -93,8 +91,7 @@
         NewPictureViewController *picCtr = [[NewPictureViewController alloc] initWithRoot:ngVC];
 
         [ctr pushViewController:picCtr animation:ViewSwitchAnimationBounce];
-            //测试释放后 上传图片是否会崩溃。在网络不好时，会访问释放掉的上传图片声音导致崩溃。
-//        [picCtr release];
+        [picCtr release];
     }];
     [ngVC release];
 }

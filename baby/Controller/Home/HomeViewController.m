@@ -196,6 +196,7 @@
 //    self.playingGalleryId = 0;
     //type类型
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",index] forKey:@"glSegmentIndex"];
+    
     [self loadGallery];
 }
 

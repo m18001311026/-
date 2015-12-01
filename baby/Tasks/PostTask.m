@@ -52,7 +52,6 @@
 - (id)initNewGallery:(NSArray *)pictures
              content:(NSString *)content
                 city:(int)city
-//                type:(int)type
 {
     if (!pictures) {
         return nil;
@@ -69,18 +68,20 @@
         if (city > 0) {
             [galleryJson setValue:[NSString stringWithFormat:@"%d", city] forKey:@"cityId"];
         }
-//        if (type) {
         NSString * type = [[NSUserDefaults standardUserDefaults] objectForKey:@"glSegmentIndex"];
         if (type == nil) {
             type = @"0";
         }
-//        if ([type isEqualToString:@"1"]) {
-//            type = @"0";
-//        }else{
-//            type = @"1";
-//        }
-            [galleryJson setValue:type forKey:@"type"];
-//        }
+        if ([type isEqualToString:@"0"]){
+            type = @"1";
+        }else {
+            type = @"0";
+        }
+        
+        
+        
+        [galleryJson setValue:type forKey:@"type"];
+
         [galleryJson setValue:pictures forKey:@"pictures"];
         
         NSString *json = nil;
