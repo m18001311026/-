@@ -1,4 +1,4 @@
-//
+    //
 //  WelcomeViewController.m
 //  baby
 //
@@ -38,9 +38,13 @@
 #import "WXApi.h"
 #import "ShareManager.h"
 #import "UserLessonLK.h"
+#import "LZLoginModel.h"
+
+
 
 @interface WelcomeViewController ()
-
+@property (nonatomic,strong) NSString * access_token;
+@property (nonatomic,strong) NSString * openid;
 @end
 
 @implementation WelcomeViewController {
@@ -55,6 +59,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(getAccess_token:) name:@"WexinLogin"
+                                               object:nil];
+
 
     self.view.backgroundColor = [UIColor clearColor];
     
@@ -232,7 +240,7 @@
     UIButton *WeixinBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     WeixinBtn.frame = CGRectMake(30+20+90, posY - 90, 70, 70);
     [WeixinBtn setBackgroundColor:[UIColor clearColor]];
-    [WeixinBtn addTarget:self action:@selector(doweixin) forControlEvents:UIControlEventTouchUpInside];
+        [WeixinBtn addTarget:self action:@selector(doweixin:) forControlEvents:UIControlEventTouchUpInside];
     [bg addSubview:WeixinBtn];
     
     UIImageView *weixinImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"wixinLogin.png"]];
@@ -267,6 +275,71 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 
+}
+#pragma  mark -  Actions
+-(void)doweixin:(UIButton *)sender{
+    SendAuthReq* req =[[SendAuthReq alloc ] init];
+    req.scope = @"snsapi_userinfo,snsapi_base";
+    req.state = @"Project" ;
+    [WXApi sendReq:req];
+}
+-(void)getAccess_token:(NSNotification*)noti
+{
+    [LZLoginModel getWeiXiTokenWithCode:noti.userInfo[@"code"] AndAppKey:wxAppKey AndSecret:wxSecret CallBack:^(BOOL success, NSString *message, NSDictionary *info) {
+        if (success ==YES) {
+            self.access_token = [info objectForKey:@"access_token"];
+            self.openid = [info objectForKey:@"openid"];
+            [LZLoginModel getUserInfoWithToken:self.access_token AndOpenid:self.openid CallBack:^(BOOL success, NSString *message, NSDictionary *info) {
+                if (success == YES) {
+                    
+                        //                [[NSUserDefaults standardUserDefaults] setObject:[[userInfo sourceData] objectForKey:@"unionid"] forKey:@"wechatLoginUID"];
+                        //                [[NSUserDefaults standardUserDefaults] synchronize];
+                        NSString * nickName =[info objectForKey:@"nickname"];
+                            // 注册
+                            UserTask *task = [[UserTask alloc] initRegister:nickName
+                                                                   password:@""
+                                                                   atSchool:NO
+                                                                 introducer:@""];
+                            task.responseCallbackBlock = ^(bool successful, id userInfo) {
+                                if (successful) {
+                                    // 登陆
+                                    UserTask *loginTask = [[UserTask alloc] initLogin:nickName password:@""];
+                                    
+                                    loginTask.logicCallbackBlock = ^(bool successful, id userInfo) {
+                                        if (successful) {
+                                            
+                                            [UI showAlert:@"登录成功"];
+                                            [ctr popToRootViewControllerWithAnimation:ViewSwitchAnimationSwipeL2R];
+                                            [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLoginNotification
+                                                                                                object:nil];
+                                            
+                                            
+                                        } else {
+                                            // 登陆
+                                            [UI showAlert:@"登录失败，请检查网络环境或者帐号密码"];
+                                            
+                                            
+                                        }
+                                    };
+                                    [TaskQueue addTaskToQueue:loginTask];
+                                    [loginTask release];
+                                }
+                                else{
+                                }
+                            };
+                            [TaskQueue addTaskToQueue:task];
+                            [task release];
+                            
+                            
+
+                    
+
+                }
+            }];
+        }
+    }];
+    
+    
 }
 //微信
 -(void)doweixin{

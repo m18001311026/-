@@ -46,7 +46,8 @@ NavigationControl *ctr;
 #define SPLASH_VER [[NSUserDefaults standardUserDefaults] valueForKey:@"SPLASH_VER"]
 #define SPLASH_VER_WRITE(ver) [[NSUserDefaults standardUserDefaults] setValue:ver forKey:@"SPLASH_VER"]
 
-@interface AppDelegate ()<WeiboSDKDelegate>
+
+@interface AppDelegate ()<WeiboSDKDelegate,WXApiDelegate>
 
 @property (strong, nonatomic) NSDictionary *userInfoDict;
 @property (strong, nonatomic) NSMutableArray *msgLists;
@@ -141,7 +142,7 @@ NavigationControl *ctr;
     if ([urlString rangeOfString:@"wb2212006707"].length > 0) {
         return [WeiboSDK handleOpenURL:url delegate:self];
     }else{
-        return ([TencentOAuth HandleOpenURL:url] || [ShareSDK handleOpenURL:url sourceApplication:sourceApplication annotation:annotation wxDelegate:self]);
+        return ([TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:self]);
     }
 
 }
@@ -152,7 +153,7 @@ NavigationControl *ctr;
     if ([urlString rangeOfString:@"wb2212006707"].length > 0) {
         return [WeiboSDK handleOpenURL:url delegate:self];
     }else{
-        return ([TencentOAuth HandleOpenURL:url] || [ShareSDK handleOpenURL:url wxDelegate:self]);
+        return ([TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:self]);
     }
     return YES;
 }
@@ -168,7 +169,7 @@ NavigationControl *ctr;
     //----------tongzhi
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getUserId:) name:@"userInformation" object:nil];
-
+    [self configWeiXin];
     [WeiboSDK enableDebugMode:YES];
     [WeiboSDK registerApp:@"2212006707"];
       delegate = self;
@@ -210,7 +211,7 @@ NavigationControl *ctr;
         [rootVC release];
         
         //https://itunes.apple.com/cn/app/id873922966
-        NSString *urlStr = @"https://itunes.apple.com/lookup?id=873922966";
+        NSString *urlStr = @"https://itunes.apple.com/lookup?id=1061521366";
         NSURL *url = [NSURL URLWithString:urlStr];
         NSURLRequest *req = [NSURLRequest requestWithURL:url];
         [NSURLConnection connectionWithRequest:req delegate:self];
@@ -293,26 +294,26 @@ NavigationControl *ctr;
 }
 
 // 内置更新
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
-    NSError *error;
-    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
-    NSDictionary *appInfo = (NSDictionary *)json;
-    
-    NSString *version = [[[appInfo objectForKey:@"results"]objectAtIndex:0]objectForKey:@"version"];
-    NSString *version1 = [ConfigManager getCurrentVersion];
-    
-    if ([self updateFlagWithAPPversion:version1 AndSerVersion:version]) {
-        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"升级提示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-        [alertView show];
-    }
-
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    if (buttonIndex == 1) {
-        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id873922966"]];
-    }
-}
+//- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data{
+//    NSError *error;
+//    id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
+//    NSDictionary *appInfo = (NSDictionary *)json;
+//    
+//    NSString *version = [[[appInfo objectForKey:@"results"]objectAtIndex:0]objectForKey:@"version"];
+//    NSString *version1 = [ConfigManager getCurrentVersion];
+//    
+//    if ([self updateFlagWithAPPversion:version1 AndSerVersion:version]) {
+//        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"升级提示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+//        [alertView show];
+//    }
+//
+//}
+//
+//- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//    if (buttonIndex == 1) {
+//        [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"https://itunes.apple.com/cn/app/id1061521366"]];
+//    }
+//}
 
 
 
@@ -489,39 +490,66 @@ NavigationControl *ctr;
 //    app.applicationIconBadgeNumber +=[(NSNumber *)[[userInfo objectForKey:@"aps"] objectForKey:@"badge"] intValue];
 
 }
--(BOOL)updateFlagWithAPPversion:(NSString *)appVersion AndSerVersion:(NSString*)serVersion{
+//-(BOOL)updateFlagWithAPPversion:(NSString *)appVersion AndSerVersion:(NSString*)serVersion{
+//    
+//    NSArray * SerVersionArray = [serVersion componentsSeparatedByString:@"."];
+//    NSArray * AppVersionArray = [appVersion componentsSeparatedByString:@"."];
+//    
+//    if ([AppVersionArray[0] integerValue]>=[SerVersionArray[0] integerValue]) {
+//        if([AppVersionArray[0] integerValue] == [SerVersionArray[0] integerValue]){
+//            if ([AppVersionArray[1] integerValue]>=[SerVersionArray[1] integerValue]) {
+//                if([AppVersionArray[1] integerValue]==[SerVersionArray[1] integerValue]){
+//                    if([AppVersionArray[2] integerValue]>=[SerVersionArray[2] integerValue]){
+//                        //不升级
+//                        return NO;
+//                    }else{
+//                        //升级
+//                        return YES;
+//                    }
+//                }else{
+//                    //不升级
+//                    return NO;
+//                }
+//            }else{
+//                //升级
+//                return YES;
+//            }
+//        }else{
+//            //不升级
+//            return NO;
+//        }
+//    }else{
+//        //升级
+//        return YES;
+//    }
+//    
+//}
+#pragma mark - 微信相关
+-(void)configWeiXin{
+    [WXApi registerApp:wxAppKey withDescription:@"weixin"];
+}
+
+-(void)onResp:(BaseReq *)resp
+{
+    /*
+     ErrCode ERR_OK = 0(用户同意)
+     ERR_AUTH_DENIED = -4（用户拒绝授权）
+     ERR_USER_CANCEL = -2（用户取消）
+     code    用户换取access_token的code，仅在ErrCode为0时有效
+     state   第三方程序发送时用来标识其请求的唯一性的标志，由第三方程序调用sendReq时传入，由微信终端回传，state字符串长度不能超过1K
+     lang    微信客户端当前语言
+     country 微信用户当前国家信息
+     */
+    SendAuthResp *aresp = (SendAuthResp *)resp;
     
-    NSArray * SerVersionArray = [serVersion componentsSeparatedByString:@"."];
-    NSArray * AppVersionArray = [appVersion componentsSeparatedByString:@"."];
-    
-    if ([AppVersionArray[0] integerValue]>=[SerVersionArray[0] integerValue]) {
-        if([AppVersionArray[0] integerValue] == [SerVersionArray[0] integerValue]){
-            if ([AppVersionArray[1] integerValue]>=[SerVersionArray[1] integerValue]) {
-                if([AppVersionArray[1] integerValue]==[SerVersionArray[1] integerValue]){
-                    if([AppVersionArray[2] integerValue]>=[SerVersionArray[2] integerValue]){
-                        //不升级
-                        return NO;
-                    }else{
-                        //升级
-                        return YES;
-                    }
-                }else{
-                    //不升级
-                    return NO;
-                }
-            }else{
-                //升级
-                return YES;
-            }
-        }else{
-            //不升级
-            return NO;
-        }
-    }else{
-        //升级
-        return YES;
+    if (aresp.errCode == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"WexinLogin" object:nil userInfo:@{@"code":aresp.code}];
     }
     
 }
+
+
+
+
 
 @end

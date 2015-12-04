@@ -158,6 +158,7 @@
 		6E832BDD1BCFA22A00697ED3 /* bbjhxuancai.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E832BD81BCFA22A00697ED3 /* bbjhxuancai.png */; };
 		6ECB3AE31B5A55D600219174 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECB3AE21B5A55D600219174 /* libzbar.a */; };
 		6ECB3AE81B5A60E900219174 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECB3AE71B5A60E900219174 /* libmp3lame.a */; };
+		6EDCB8F01C116E4500E0EA68 /* LZLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDCB8EF1C116E4500E0EA68 /* LZLoginModel.m */; };
 		6EE9676F1BF5944A008D07EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE9676D1BF5944A008D07EC /* Default-568h@2x.png */; };
 		6EE967701BF5944A008D07EC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE9676E1BF5944A008D07EC /* Default@2x.png */; };
 		6EF705DA1BF98F8500104DCB /* background_new_juanjiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EF705D91BF98F8500104DCB /* background_new_juanjiao.png */; };
@@ -720,6 +721,8 @@
 		6ECB3AE21B5A55D600219174 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
 		6ECB3AE41B5A5DC300219174 /* lame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lame.h; sourceTree = "<group>"; };
 		6ECB3AE71B5A60E900219174 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
+		6EDCB8EE1C116E4500E0EA68 /* LZLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZLoginModel.h; sourceTree = "<group>"; };
+		6EDCB8EF1C116E4500E0EA68 /* LZLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZLoginModel.m; sourceTree = "<group>"; };
 		6EE9676D1BF5944A008D07EC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		6EE9676E1BF5944A008D07EC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		6EF705D91BF98F8500104DCB /* background_new_juanjiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_new_juanjiao.png; sourceTree = "<group>"; };
@@ -2716,6 +2719,8 @@
 		C29BFA7418C30CC3006AC9ED /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				6EDCB8EE1C116E4500E0EA68 /* LZLoginModel.h */,
+				6EDCB8EF1C116E4500E0EA68 /* LZLoginModel.m */,
 				C29BFA7518C30D27006AC9ED /* WelcomeViewController.h */,
 				C29BFA7618C30D27006AC9ED /* WelcomeViewController.m */,
 				C29BFA8018C31037006AC9ED /* RegisterViewController.h */,
@@ -3384,6 +3389,7 @@
 				C2E43D9C18CCBFB9003642B5 /* RotateImageMenuItemButton.m in Sources */,
 				C2DB8D1318FDA47F00B7889F /* BookingViewController.m in Sources */,
 				C2FAAF4C1952B38500EC938A /* AddressBookManager.m in Sources */,
+				6EDCB8F01C116E4500E0EA68 /* LZLoginModel.m in Sources */,
 				C2FEE32518F0455F000F6A38 /* LinearBezierCurve.m in Sources */,
 				6E6AB0001B8CB8F100D69982 /* UIGestureRecognizer+BlocksKit.m in Sources */,
 				C2DB1D5118CD7575008911B7 /* AVCamCaptureManager.m in Sources */,
@@ -3772,6 +3778,7 @@
 					"$(PROJECT_DIR)/baby.xcodeproj",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
+				PRODUCT_BUNDLE_IDENTIFIER = com.baby.huibenbao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=*]" = "";
@@ -3831,9 +3838,10 @@
 					"$(PROJECT_DIR)/baby.xcodeproj",
 				);
 				OTHER_LDFLAGS = "-fobjc-arc";
+				PRODUCT_BUNDLE_IDENTIFIER = com.baby.huibenbao;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "ac0aa1d0-d729-4fd1-b5eb-2ac2009110ae";
-				"PROVISIONING_PROFILE[sdk=*]" = "ac0aa1d0-d729-4fd1-b5eb-2ac2009110ae";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=*]" = "";
 				SDKROOT = iphoneos9.1;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";

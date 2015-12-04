@@ -28,11 +28,12 @@
     
 }
 
-- (id)initGalleryList:(bool)singlePage page:(int)page count:(int)count {
+- (id)initGalleryList:(bool)type page:(int)page count:(int)count {
     self = [super initWithUrl:SERVERURL method:POST];
     if (self) {
         [self addParameter:@"action" value:@"gallery_query"];
-        [self addParameter:@"single_page" value:singlePage? @"1": @"0"];
+        [self addParameter:@"type" value:type?@"1":@"0"];
+//        [self addParameter:@"single_page" value:singlePage? @"1": @"0"];
         [self addParameter:@"page" value:[NSString stringWithFormat:@"%d", page]];
         [self addParameter:@"count" value:[NSString stringWithFormat:@"%d", count]];
 

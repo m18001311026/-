@@ -36,7 +36,7 @@
               
                 NSNumber * xDic=[[userInfo objectForKey:@"user"] objectForKey:@"id"];
                 NSInteger id =  [xDic integerValue];
-                NSString * userId=[NSString stringWithFormat:@"%d",id];
+                NSString * userId=[NSString stringWithFormat:@"%ld",(long)id];
                
                 NSLog(@"string 类型 is %@",userId);
                 

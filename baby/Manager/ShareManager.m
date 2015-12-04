@@ -51,7 +51,7 @@ static ShareManager *_me = nil;
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
 
-    [ShareSDK connectWeChatWithAppId:@"wx230943e70534a958" appSecret:@"1b12bd2cff1f05d9180d7fa4edfb981d" wechatCls:[WXApi class]];
+    [ShareSDK connectWeChatWithAppId:@"wxbd5609ded01a57da" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" wechatCls:[WXApi class]];
 //    [WXApi registerApp:@"aLJkY6kglqiOksiN"];
     
        /**

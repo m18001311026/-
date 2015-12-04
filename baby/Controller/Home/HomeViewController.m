@@ -64,7 +64,7 @@
         self.view.backgroundColor = [UIColor whiteColor];
 
         galleryType = [[SimpleSegment alloc] initWithFrame:CGRectMake(5, 5, 310, 29)
-                                                    titles:@[@"绘本", @"单幅画"]];
+                                                    titles:@[@"经典绘本", @"原创绘本"]];
         galleryType.selectedTextColor = [UIColor whiteColor];
       // galleryType.selectedBackgoundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
          galleryType.selectedBackgoundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
@@ -86,7 +86,7 @@
         [self.view addSubview:galleryTable];
         [galleryTable release];
         
-        [self setViewTitle:@"宝贝计画" ];
+        [self setViewTitle:@"看绘本,上绘本宝" ];
         
 
         bbTopbar.backgroundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
@@ -195,6 +195,8 @@
     currentPage = 1;
     galleryTable.isRefreshing = YES;
 //    self.playingGalleryId = 0;
+    
+    
     [self loadGallery];
 }
 
