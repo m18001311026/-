@@ -296,7 +296,7 @@
                         //                [[NSUserDefaults standardUserDefaults] synchronize];
                         NSString * nickName =[info objectForKey:@"nickname"];
                             // 注册
-                            UserTask *task = [[UserTask alloc] initRegister:nickName
+                    UserTask *task = [[UserTask alloc] initRegister:nickName
                                                                    password:@""
                                                                    atSchool:NO
                                                                  introducer:@""];
@@ -342,62 +342,62 @@
     
 }
 //微信
--(void)doweixin{
-    
-    
-    [ShareSDK getUserInfoWithType:ShareTypeWeixiTimeline authOptions:nil result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
-            NSLog(@"userInfo = %@",userInfo);
-            if(result)
-            {
-//                [[NSUserDefaults standardUserDefaults] setObject:[[userInfo sourceData] objectForKey:@"unionid"] forKey:@"wechatLoginUID"];
-//                [[NSUserDefaults standardUserDefaults] synchronize];
-                NSString * nickName =[[userInfo sourceData] objectForKey:@"nickname"];
-                if([userInfo sourceData]){
-                    // 注册
-                    UserTask *task = [[UserTask alloc] initRegister:nickName
-                                                           password:@""
-                                                           atSchool:NO
-                                                         introducer:@""];
-                    task.responseCallbackBlock = ^(bool successful, id userInfo) {
-                        if (successful) {
-                            // 登陆
-                            UserTask *loginTask = [[UserTask alloc] initLogin:nickName password:@""];
-                            
-                            loginTask.logicCallbackBlock = ^(bool successful, id userInfo) {
-                                if (successful) {
-
-                            [UI showAlert:@"登录成功"];
-                            [ctr popToRootViewControllerWithAnimation:ViewSwitchAnimationSwipeL2R];
-                            [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLoginNotification
-                                                                                object:nil];
-                           
-                            
-                        } else {
-                            // 登陆
-                            [UI showAlert:@"登录失败，请检查网络环境或者帐号密码"];
-                            
-                            
-                        }
-                            };
-                            [TaskQueue addTaskToQueue:loginTask];
-                            [loginTask release];
-                        }
-                        else{
-                        }
-                    };
-                    [TaskQueue addTaskToQueue:task];
-                    [task release];
-    
-    
-                    };
-            }else{
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先安装微信客户端或尝试其他方式登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alertView show];
-                NSLog(@"userInfo2 = %@",[userInfo sourceData]);
-            }
-            }];
-       
-    }
+//-(void)doweixin{
+//    
+//    
+//    [ShareSDK getUserInfoWithType:ShareTypeWeixiTimeline authOptions:nil result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+//            NSLog(@"userInfo = %@",userInfo);
+//            if(result)
+//            {
+////                [[NSUserDefaults standardUserDefaults] setObject:[[userInfo sourceData] objectForKey:@"unionid"] forKey:@"wechatLoginUID"];
+////                [[NSUserDefaults standardUserDefaults] synchronize];
+//                NSString * nickName =[[userInfo sourceData] objectForKey:@"nickname"];
+//                if([userInfo sourceData]){
+//                    // 注册
+//                    UserTask *task = [[UserTask alloc] initRegister:nickName
+//                                                           password:@""
+//                                                           atSchool:NO
+//                                                         introducer:@""];
+//                    task.responseCallbackBlock = ^(bool successful, id userInfo) {
+//                        if (successful) {
+//                            // 登陆
+//                            UserTask *loginTask = [[UserTask alloc] initLogin:nickName password:@""];
+//                            
+//                            loginTask.logicCallbackBlock = ^(bool successful, id userInfo) {
+//                                if (successful) {
+//
+//                            [UI showAlert:@"登录成功"];
+//                            [ctr popToRootViewControllerWithAnimation:ViewSwitchAnimationSwipeL2R];
+//                            [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLoginNotification
+//                                                                                object:nil];
+//                           
+//                            
+//                        } else {
+//                            // 登陆
+//                            [UI showAlert:@"登录失败，请检查网络环境或者帐号密码"];
+//                            
+//                            
+//                        }
+//                            };
+//                            [TaskQueue addTaskToQueue:loginTask];
+//                            [loginTask release];
+//                        }
+//                        else{
+//                        }
+//                    };
+//                    [TaskQueue addTaskToQueue:task];
+//                    [task release];
+//    
+//    
+//                    };
+//            }else{
+//                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先安装微信客户端或尝试其他方式登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//                [alertView show];
+//                NSLog(@"userInfo2 = %@",[userInfo sourceData]);
+//            }
+//            }];
+//       
+//    }
 
 
 //
@@ -548,7 +548,7 @@
 - (void)doLoginWithweibo:(UIButton *)btn
 {
     
-    [WeiboSDK registerApp:@"2212006707"];
+    [WeiboSDK registerApp:@"3326627843"];
     
     
     WBAuthorizeRequest *request = [WBAuthorizeRequest request];

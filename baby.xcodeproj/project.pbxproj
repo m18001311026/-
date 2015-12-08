@@ -159,6 +159,7 @@
 		6ECB3AE31B5A55D600219174 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECB3AE21B5A55D600219174 /* libzbar.a */; };
 		6ECB3AE81B5A60E900219174 /* libmp3lame.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ECB3AE71B5A60E900219174 /* libmp3lame.a */; };
 		6EDCB8F01C116E4500E0EA68 /* LZLoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6EDCB8EF1C116E4500E0EA68 /* LZLoginModel.m */; };
+		6EDCB8F21C118BDD00E0EA68 /* huibenbao_yindaoye.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6EDCB8F11C118BDD00E0EA68 /* huibenbao_yindaoye.jpg */; };
 		6EE9676F1BF5944A008D07EC /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE9676D1BF5944A008D07EC /* Default-568h@2x.png */; };
 		6EE967701BF5944A008D07EC /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EE9676E1BF5944A008D07EC /* Default@2x.png */; };
 		6EF705DA1BF98F8500104DCB /* background_new_juanjiao.png in Resources */ = {isa = PBXBuildFile; fileRef = 6EF705D91BF98F8500104DCB /* background_new_juanjiao.png */; };
@@ -723,6 +724,7 @@
 		6ECB3AE71B5A60E900219174 /* libmp3lame.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libmp3lame.a; sourceTree = "<group>"; };
 		6EDCB8EE1C116E4500E0EA68 /* LZLoginModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZLoginModel.h; sourceTree = "<group>"; };
 		6EDCB8EF1C116E4500E0EA68 /* LZLoginModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZLoginModel.m; sourceTree = "<group>"; };
+		6EDCB8F11C118BDD00E0EA68 /* huibenbao_yindaoye.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = huibenbao_yindaoye.jpg; sourceTree = "<group>"; };
 		6EE9676D1BF5944A008D07EC /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		6EE9676E1BF5944A008D07EC /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default@2x.png"; path = "../Default@2x.png"; sourceTree = "<group>"; };
 		6EF705D91BF98F8500104DCB /* background_new_juanjiao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_new_juanjiao.png; sourceTree = "<group>"; };
@@ -2757,6 +2759,7 @@
 		C29F7D2218E9F9AD00461C41 /* More */ = {
 			isa = PBXGroup;
 			children = (
+				6EDCB8F11C118BDD00E0EA68 /* huibenbao_yindaoye.jpg */,
 				6EE9676D1BF5944A008D07EC /* Default-568h@2x.png */,
 				6EE9676E1BF5944A008D07EC /* Default@2x.png */,
 				C276D0DD1914A4BA004DBAD1 /* iceberg.jpg */,
@@ -3135,7 +3138,7 @@
 				ORGANIZATIONNAME = "zhang da";
 				TargetAttributes = {
 					C28219C6189FDD6500807E71 = {
-						DevelopmentTeam = W78FD6KLHE;
+						DevelopmentTeam = 8EEC54LP4U;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -3318,6 +3321,7 @@
 				3B9E29341A8CFE68001EBE44 /* s3-p.jpg in Resources */,
 				560BB6C11A4185300090CA5A /* 话题.png in Resources */,
 				560BB6C31A4185360090CA5A /* 社区.png in Resources */,
+				6EDCB8F21C118BDD00E0EA68 /* huibenbao_yindaoye.jpg in Resources */,
 				3B2764D41A8A07D800365333 /* home_tab_my_normal.png in Resources */,
 				C20B9FF11900A75E004E8508 /* zbar-helpicons.png in Resources */,
 				C2FC3DD418DF6369000A9682 /* movieBackward@2x.png in Resources */,
@@ -3737,8 +3741,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: shuai yang (EQEK54G2W7)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: shuai yang (EQEK54G2W7)";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

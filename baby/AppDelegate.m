@@ -139,7 +139,7 @@ NavigationControl *ctr;
 {
 
     NSString *urlString = [url absoluteString];
-    if ([urlString rangeOfString:@"wb2212006707"].length > 0) {
+    if ([urlString rangeOfString:@"wb3326627843"].length > 0) {
         return [WeiboSDK handleOpenURL:url delegate:self];
     }else{
         return ([TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:self]);
@@ -150,7 +150,7 @@ NavigationControl *ctr;
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
 {
     NSString *urlString = [url absoluteString];
-    if ([urlString rangeOfString:@"wb2212006707"].length > 0) {
+    if ([urlString rangeOfString:@"wb3326627843"].length > 0) {
         return [WeiboSDK handleOpenURL:url delegate:self];
     }else{
         return ([TencentOAuth HandleOpenURL:url] || [WXApi handleOpenURL:url delegate:self]);
@@ -171,7 +171,7 @@ NavigationControl *ctr;
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(getUserId:) name:@"userInformation" object:nil];
     [self configWeiXin];
     [WeiboSDK enableDebugMode:YES];
-    [WeiboSDK registerApp:@"2212006707"];
+    [WeiboSDK registerApp:@"3326627843"];
       delegate = self;
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
@@ -211,11 +211,11 @@ NavigationControl *ctr;
         [rootVC release];
         
         //https://itunes.apple.com/cn/app/id873922966
-        NSString *urlStr = @"https://itunes.apple.com/lookup?id=1061521366";
-        NSURL *url = [NSURL URLWithString:urlStr];
-        NSURLRequest *req = [NSURLRequest requestWithURL:url];
-        [NSURLConnection connectionWithRequest:req delegate:self];
-        
+//        NSString *urlStr = @"https://itunes.apple.com/lookup?id=1061521366";
+//        NSURL *url = [NSURL URLWithString:urlStr];
+//        NSURLRequest *req = [NSURLRequest requestWithURL:url];
+//        [NSURLConnection connectionWithRequest:req delegate:self];
+//        
 //        if (![[ConfigManager me] getSession]) {
 //            // 用户没有登陆
 //            WelcomeViewController *welVC = [[WelcomeViewController alloc] init];

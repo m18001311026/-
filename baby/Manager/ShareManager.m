@@ -58,9 +58,9 @@ static ShareManager *_me = nil;
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
      **/
-    //    [ShareSDK connectSinaWeiboWithAppKey:@"568898243"
-    //                               appSecret:@"38a4f8204cc784f81f9f0daaf31e02e3"
-    //                             redirectUri:@"http://www.sharesdk.cn"];
+        [ShareSDK connectSinaWeiboWithAppKey:@"3326627843"
+                                   appSecret:@"21efdddd0462022792a6033c321f28df"
+                                 redirectUri:@"http://www.sharesdk.cn"];
 //    [ShareSDK connectSinaWeiboWithAppKey:@"2212006707"
 //                               appSecret:@"0af0ef76b43f273d2b165eba1856258e"
 //                             redirectUri:@"http://www.children-sketchbook.com"];

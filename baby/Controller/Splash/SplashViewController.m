@@ -30,8 +30,8 @@
       //  self.view.backgroundColor = [UIColor colorWithRed:1 green:252/255.0f blue:1/255.0f alpha:1];
         self.view.backgroundColor =[Shared bbYellow];
         scrollView = [[UIScrollView alloc] init];
-        scrollView.backgroundColor = [UIColor clearColor];
-        scrollView.contentSize = CGSizeMake(320*4, screentContentHeight);
+        scrollView.backgroundColor = [UIColor whiteColor];
+        scrollView.contentSize = CGSizeMake(320*2, screentContentHeight);
         scrollView.pagingEnabled = YES;
         scrollView.delegate = self;
         scrollView.showsHorizontalScrollIndicator = NO;
@@ -41,7 +41,7 @@
         paging = [[UIPageControl alloc] initWithFrame:CGRectMake(0, 200, 320, 20)];
         paging.hidesForSinglePage = YES;
         paging.userInteractionEnabled = NO;
-        paging.numberOfPages = 4;
+        paging.numberOfPages = 1;
         [self.view addSubview:paging];
         [paging release];
         
@@ -61,41 +61,41 @@
                                                                            screentContentHeight)];
         view1.contentMode = UIViewContentModeScaleAspectFit;
         view1.backgroundColor = [UIColor clearColor];
-        view1.image = [UIImage imageNamed:@"s1-p.jpg"];
+        view1.image = [UIImage imageNamed:@"huibenbao_yindaoye.jpg"];
         [scrollView addSubview:view1];
         [view1 release];
         
-        UIImageView *view2 = [[UIImageView alloc] initWithFrame:CGRectMake(320,
-                                                                           0,
-                                                                           320,
-                                                                           screentContentHeight)];
-        view2.contentMode = UIViewContentModeScaleAspectFit;
-        view2.backgroundColor = [UIColor clearColor];
-        view2.image = [UIImage imageNamed:@"s2-p.jpg"];
-        [scrollView addSubview:view2];
-        [view2 release];
-        
-        UIImageView *view3 = [[UIImageView alloc] initWithFrame:CGRectMake(640,
-                                                                           0,
-                                                                           320,
-                                                                           screentContentHeight)];
-        view3.contentMode = UIViewContentModeScaleAspectFit;
-        
-        view3.backgroundColor = [UIColor clearColor];
-        view3.image = [UIImage imageNamed:@"s3-p.jpg"];
-        [scrollView addSubview:view3];
-        [view3 release];
-        
-        UIImageView *view4 = [[UIImageView alloc] initWithFrame:CGRectMake(960,
-                                                                           0,
-                                                                           320,
-                                                                           screentContentHeight)];
-        view4.contentMode = UIViewContentModeScaleAspectFit;
-        view4.backgroundColor = [UIColor clearColor];
-        view4.image = [UIImage imageNamed:@"s4-p.jpg"];
-        view4.userInteractionEnabled = YES;
-        [scrollView addSubview:view4];
-        [view4 release];
+//        UIImageView *view2 = [[UIImageView alloc] initWithFrame:CGRectMake(320,
+//                                                                           0,
+//                                                                           320,
+//                                                                           screentContentHeight)];
+//        view2.contentMode = UIViewContentModeScaleAspectFit;
+//        view2.backgroundColor = [UIColor clearColor];
+//        view2.image = [UIImage imageNamed:@"s2-p.jpg"];
+//        [scrollView addSubview:view2];
+//        [view2 release];
+//        
+//        UIImageView *view3 = [[UIImageView alloc] initWithFrame:CGRectMake(640,
+//                                                                           0,
+//                                                                           320,
+//                                                                           screentContentHeight)];
+//        view3.contentMode = UIViewContentModeScaleAspectFit;
+//        
+//        view3.backgroundColor = [UIColor clearColor];
+//        view3.image = [UIImage imageNamed:@"s3-p.jpg"];
+//        [scrollView addSubview:view3];
+//        [view3 release];
+//        
+//        UIImageView *view4 = [[UIImageView alloc] initWithFrame:CGRectMake(960,
+//                                                                           0,
+//                                                                           320,
+//                                                                           screentContentHeight)];
+//        view4.contentMode = UIViewContentModeScaleAspectFit;
+//        view4.backgroundColor = [UIColor clearColor];
+//        view4.image = [UIImage imageNamed:@"s4-p.jpg"];
+//        view4.userInteractionEnabled = YES;
+//        [scrollView addSubview:view4];
+//        [view4 release];
     }
     return self;
 }
@@ -109,7 +109,7 @@
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)sView willDecelerate:(BOOL)decelerate {
-    if (scrollView.contentOffset.x > 320*3+40) {
+    if (scrollView.contentOffset.x > 40) {
         sView.delegate = nil;
         [ctr popViewControllerAnimated:YES];
     }

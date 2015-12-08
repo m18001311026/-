@@ -65,6 +65,7 @@
         if (city > 0) {
             [galleryJson setValue:[NSString stringWithFormat:@"%d", city] forKey:@"cityId"];
         }
+        
 
         [galleryJson setValue:pictures forKey:@"pictures"];
 

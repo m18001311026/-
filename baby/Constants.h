@@ -47,8 +47,8 @@
 #define NOTIFY_NEWGALLERYADD @"notify.gallery.add"
 
 //page url
-#define GALLERY_PAGE @"http://115.28.136.139:8081/babyweb/g4.jsp?id=%ld"
-#define LESSON_PAGE @"http://115.28.136.139:8081/babyweb/g8.jsp?id=%ld"
+#define GALLERY_PAGE @"http://115.28.136.139:8080/bbweb/g4.jsp?id=%ld"
+#define LESSON_PAGE @"http://115.28.136.139:8080/bbweb/g8.jsp?id=%ld"
 
 //umeng event
 #define UMENG_REGISTER_CHANNEL @"register_channel"

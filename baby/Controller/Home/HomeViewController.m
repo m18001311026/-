@@ -195,7 +195,8 @@
     currentPage = 1;
     galleryTable.isRefreshing = YES;
 //    self.playingGalleryId = 0;
-    
+
+
     
     [self loadGallery];
 }
