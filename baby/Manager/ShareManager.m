@@ -54,8 +54,6 @@ static ShareManager *_me = nil;
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
 
-//    [ShareSDK connectWeChatWithAppId:@"wxbd5609ded01a57da" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" wechatCls:[WXApi class]];
-//    [WXApi registerApp:@"aLJkY6kglqiOksiN"];
     [ShareSDK connectWeChatWithAppId:@"wxbd5609ded01a57da"
                            appSecret:@"d4624c36b6795d1d99dcf0547af5443d"
                            wechatCls:[WXApi class]];
@@ -72,38 +70,30 @@ static ShareManager *_me = nil;
      http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
      
      **/
-    [ShareSDK connectTencentWeiboWithAppKey:@""
-                                  appSecret:@""
-                                redirectUri:@""];
-    
+//    [ShareSDK connectTencentWeiboWithAppKey:@""
+//                                  appSecret:@""
+//                                redirectUri:@""];
+//    
     /**
      连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
      http://connect.qq.com/intro/login/上申请加入QQ登录，并将相关信息填写到以下字段
      
      如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
      **/
-    [ShareSDK connectQZoneWithAppKey:@""
-                           appSecret:@""
-                   qqApiInterfaceCls:[QQApiInterface class]
-                     tencentOAuthCls:[TencentOAuth class]];
-
-    
+//    [ShareSDK connectQZoneWithAppKey:@""
+//                           appSecret:@""
+//                   qqApiInterfaceCls:[QQApiInterface class]
+//                     tencentOAuthCls:[TencentOAuth class]];
+//
+//    
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
      **/
     //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
-    //    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
-    [ShareSDK connectQQWithQZoneAppKey:@""
-                     qqApiInterfaceCls:[QQApiInterface class]
-                       tencentOAuthCls:[TencentOAuth class]];
-
-    
-    //    //连接邮件
-    //    [ShareSDK connectMail];
-    //
-    //    //连接短信分享
-    //    [ShareSDK connectSMS];
+//    [ShareSDK connectQQWithQZoneAppKey:@""
+//                     qqApiInterfaceCls:[QQApiInterface class]
+//                       tencentOAuthCls:[TencentOAuth class]];
     
     
 }
@@ -129,7 +119,7 @@ static ShareManager *_me = nil;
     [ShareSDK showShareActionSheet:container
                          shareList:nil
                            content:content
-                     statusBarTips:YES
+                     statusBarTips:NO
                        authOptions:nil
                       shareOptions: nil
                             result:^(ShareType type,
@@ -137,7 +127,12 @@ static ShareManager *_me = nil;
                                      id<ISSPlatformShareInfo> statusInfo,
                                      id<ICMErrorInfo> error,
                                      BOOL end) {
-
+                                
+                                NSLog(@"=== response state :%zi" ,state);
+                                //可以根据回调提示用户
+                                
+                                
+                                
                                 if (state == SSResponseStateSuccess) {
                                     
                                     [MobClick event:UMENG_SHARE_PLATFORM label:[NSString stringWithFormat:@"%d", type]];
@@ -451,9 +446,9 @@ static ShareManager *_me = nil;
     
     //在授权页面中添加关注官方微博
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"宝贝计画"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"绘本宝"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"宝贝计画"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"绘本宝"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
