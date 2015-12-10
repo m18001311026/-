@@ -32,7 +32,7 @@
     self = [super initWithUrl:SERVERURL method:POST];
     if (self) {
         [self addParameter:@"action" value:@"gallery_query"];
-        [self addParameter:@"type" value:type?@"1":@"0"];
+        [self addParameter:@"type" value:type?@"0":@"1"];
 //        [self addParameter:@"single_page" value:singlePage? @"1": @"0"];
         [self addParameter:@"page" value:[NSString stringWithFormat:@"%d", page]];
         [self addParameter:@"count" value:[NSString stringWithFormat:@"%d", count]];

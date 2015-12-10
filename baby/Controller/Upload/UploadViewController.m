@@ -39,7 +39,7 @@
         multiBtn.backgroundColor = [UIColor whiteColor];
         [multiBtn setTitleColor:[UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1] forState:UIControlStateNormal];
         [multiBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        [multiBtn setTitle:@"绘本" forState:UIControlStateNormal];
+        [multiBtn setTitle:@"经典绘本" forState:UIControlStateNormal];
         multiBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [multiBtn addTarget:self action:@selector(newMultiPicture) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:multiBtn];
@@ -53,10 +53,10 @@
         singleBtn.backgroundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         [singleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [singleBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        [singleBtn setTitle:@"单幅画" forState:UIControlStateNormal];
+        [singleBtn setTitle:@"原创绘本" forState:UIControlStateNormal];
         singleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [singleBtn addTarget:self action:@selector(newSinglePicture) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:singleBtn];
+//        [self.view addSubview:singleBtn];
         
 
     }
@@ -83,7 +83,7 @@
     
         NewGalleryViewController *ngVC = [[NewGalleryViewController alloc] init];
     
-        ngVC.maxPictureCount = 1;
+//        ngVC.maxPictureCount = 1;
     
         [ctr pushViewController:ngVC animation:ViewSwitchAnimationNone finished:^{
         

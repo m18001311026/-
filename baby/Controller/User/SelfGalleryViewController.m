@@ -63,7 +63,7 @@
         [header release];
         
         galleryView = [[SimpleSegment alloc] initWithFrame:CGRectMake(5, 5, 310, 29)
-                                                    titles:@[@"缩略", @"详细"]];
+                                                    titles:@[@"详细"]];//@"缩略",
         galleryView.selectedTextColor = [UIColor whiteColor];
         galleryView.selectedBackgoundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         galleryView.normalTextColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
@@ -217,19 +217,19 @@
 
 #pragma table view section
 - (void)configCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    if (galleryView.selectedIndex == 0) {
-        for (int i = 0; i < COL_CNT; i++) {
-            GridGalleryCell *gCell = (GridGalleryCell *)cell;
-            gCell.row = indexPath.row;
-            if (indexPath.row*COL_CNT + i < galleries.count) {
-                long gId = [[galleries objectAtIndex:indexPath.row*COL_CNT + i] longValue];
-                Gallery *g = [Gallery getGalleryWithId:gId];
-                [gCell setImagePath:g.cover atCol:i];
-            } else {
-                [gCell setImagePath:nil atCol:i];
-            }
-        }
-    } else {
+//    if (galleryView.selectedIndex == 0) {
+//        for (int i = 0; i < COL_CNT; i++) {
+//            GridGalleryCell *gCell = (GridGalleryCell *)cell;
+//            gCell.row = indexPath.row;
+//            if (indexPath.row*COL_CNT + i < galleries.count) {
+//                long gId = [[galleries objectAtIndex:indexPath.row*COL_CNT + i] longValue];
+//                Gallery *g = [Gallery getGalleryWithId:gId];
+//                [gCell setImagePath:g.cover atCol:i];
+//            } else {
+//                [gCell setImagePath:nil atCol:i];
+//            }
+//        }
+//    } else {
         if (galleries.count > indexPath.row) {
             GalleryCell *gCell = (GalleryCell *)cell;
             
@@ -239,31 +239,31 @@
             [gCell updateLayout];
         }
     }
-}
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (galleryView.selectedIndex == 0) {
-        return galleries.count/COL_CNT + (galleries.count%COL_CNT>0? 1: 0);
-    } else {
+//    if (galleryView.selectedIndex == 0) {
+//        return galleries.count/COL_CNT + (galleries.count%COL_CNT>0? 1: 0);
+//    } else {
         return galleries.count;
-    }
+//    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (galleryView.selectedIndex == 0) {
-        //缩略
-        static NSString *cellId = @"gridgallerycell";
-        GridGalleryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (!cell) {
-            cell = [[[GridGalleryCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                           reuseIdentifier:cellId
-                                                    colCnt:COL_CNT] autorelease];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            cell.delegate = self;
-        }
-        [self configCell:cell atIndexPath:indexPath];
-        return cell;
-    } else {
+//    if (galleryView.selectedIndex == 0) {
+//        //缩略
+//        static NSString *cellId = @"gridgallerycell";
+//        GridGalleryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+//        if (!cell) {
+//            cell = [[[GridGalleryCell alloc] initWithStyle:UITableViewCellStyleDefault
+//                                           reuseIdentifier:cellId
+//                                                    colCnt:COL_CNT] autorelease];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+//            cell.delegate = self;
+//        }
+//        [self configCell:cell atIndexPath:indexPath];
+//        return cell;
+//    } else {
         //详细
         static NSString *cellId = @"gallerycell";
         GalleryCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -277,12 +277,12 @@
         [self configCell:cell atIndexPath:indexPath];
         return cell;
     }
-}
+//}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (galleryView.selectedIndex == 0) {
-        return 320.0f/COL_CNT;
-    } else {
+//    if (galleryView.selectedIndex == 0) {
+//        return 320.0f/COL_CNT;
+//    } else {
         if (galleries.count > indexPath.row) {
             long galleryId = [[galleries objectAtIndex:indexPath.row] longValue];
             Gallery *g = [Gallery getGalleryWithId:galleryId];
@@ -290,7 +290,7 @@
         }
         return 375;
     }
-}
+//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (galleryView.selectedIndex == 1 && galleries.count > indexPath.row) {

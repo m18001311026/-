@@ -529,6 +529,7 @@ NavigationControl *ctr;
     [WXApi registerApp:wxAppKey withDescription:@"weixin"];
 }
 
+
 -(void)onResp:(BaseReq *)resp
 {
     /*
@@ -541,10 +542,13 @@ NavigationControl *ctr;
      country 微信用户当前国家信息
      */
     SendAuthResp *aresp = (SendAuthResp *)resp;
+
     
     if (aresp.errCode == 0) {
         [[NSNotificationCenter defaultCenter] postNotificationName:@"WexinLogin" object:nil userInfo:@{@"code":aresp.code}];
     }
+    
+    
     
 }
 

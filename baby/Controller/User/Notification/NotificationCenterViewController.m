@@ -218,12 +218,13 @@
 }
 
 - (void)btnClick:(UIButton *)btn {
-    
+    //评论通知按钮
     if (btn.tag == 1001) {
 
         NotificationCommentViewController *nctr = [[NotificationCommentViewController alloc] init];
         [ctr pushViewController:nctr animation:ViewSwitchAnimationSwipeR2L];
         [nctr release];
+        //系统通知
     } else if (btn.tag == 1002) {
         NotificationSysViewController *nctr = [[NotificationSysViewController alloc] init];
         [ctr pushViewController:nctr animation:ViewSwitchAnimationSwipeR2L];

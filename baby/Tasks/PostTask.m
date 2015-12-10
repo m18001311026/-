@@ -66,7 +66,22 @@
             [galleryJson setValue:[NSString stringWithFormat:@"%d", city] forKey:@"cityId"];
         }
         
+        
+        NSString *type = [[NSUserDefaults standardUserDefaults] objectForKey:@"glSegementIndex"];
+        
+        if (type == nil)  {
+            type = @"1";
 
+        }
+        if([type isEqualToString:@"1"]){
+            type =@"0";
+        }else{
+            type = @"1";
+        }
+        
+        [galleryJson setObject:type forKey:@"type"];
+
+        
         [galleryJson setValue:pictures forKey:@"pictures"];
 
         

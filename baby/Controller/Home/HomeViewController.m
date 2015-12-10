@@ -86,7 +86,7 @@
         [self.view addSubview:galleryTable];
         [galleryTable release];
         
-        [self setViewTitle:@"看绘本,上绘本宝" ];
+        [self setViewTitle:@"绘本宝" ];
         
 
         bbTopbar.backgroundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
@@ -195,8 +195,11 @@
     currentPage = 1;
     galleryTable.isRefreshing = YES;
 //    self.playingGalleryId = 0;
-
-
+    
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",index] forKey:@"glSegementIndex"];
+    
     
     [self loadGallery];
 }
@@ -459,7 +462,7 @@
     [TaskQueue addTaskToQueue:task];
     [task release];
 }
-
+//分享画
 - (void)shareGallery:(long)galleryId {
     Gallery *g = [Gallery getGalleryWithId:galleryId];
 
@@ -468,7 +471,7 @@
     if (g) {
         UIImage *local = [IMG getImageFromDisk:g.cover];
         if (local) {
-            [[ShareManager me] showShareMenuWithTitle:@"   "
+            [[ShareManager me] showShareMenuWithTitle:@"  "
                                               content:g.content
                                                 image:local
                                               pageUrl:[NSString stringWithFormat:GALLERY_PAGE, galleryId]
@@ -476,7 +479,7 @@
             
           //  NSLog(@"11111%@",g.content);
         } else {
-            [[ShareManager me] showShareMenuWithTitle:@"   "
+            [[ShareManager me] showShareMenuWithTitle:@"  "
                                               content:g.content
                                              imageUrl:g.cover
                                               pageUrl:[NSString stringWithFormat:GALLERY_PAGE, galleryId]

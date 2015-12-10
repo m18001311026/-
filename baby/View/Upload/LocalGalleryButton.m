@@ -37,7 +37,7 @@
                     if (image) {
                         [self setImage:image forState:UIControlStateNormal];
                     } else {
-                        [self setTitle:@"单幅画" forState:UIControlStateNormal];
+                        [self setTitle:@"原创绘本" forState:UIControlStateNormal];
                         self.titleLabel.font = [UIFont systemFontOfSize:12];
                     }
                     [loadingView stopAnimating];

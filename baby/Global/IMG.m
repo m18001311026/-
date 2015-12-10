@@ -73,7 +73,7 @@ static NSMutableDictionary *cache;
     }
     return nil;
 }
-
+//从磁盘获取内容
 + (UIImage *)getImageFromDisk:(NSString *)url {
     UIImage *image = [[[UIImage alloc] initWithContentsOfFile:[self imageDiskDir:url]] autorelease];
     [self saveImageToMem:image withUrl:url];

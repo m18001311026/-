@@ -86,6 +86,16 @@
 		56FFFF701A3DDB2600106D33 /* RMPurchasesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56FFFF6B1A3DDB2600106D33 /* RMPurchasesViewController.xib */; };
 		56FFFF711A3DDB2600106D33 /* RMStoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 56FFFF6D1A3DDB2600106D33 /* RMStoreViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		56FFFF721A3DDB2600106D33 /* RMStoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 56FFFF6E1A3DDB2600106D33 /* RMStoreViewController.xib */; };
+		6E0C67E21C1800410036EDB3 /* icon_huibenbao.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E0C67E11C1800410036EDB3 /* icon_huibenbao.png */; };
+		6E32C4681C19350400C19D24 /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C4671C19350400C19D24 /* libc++abi.tbd */; };
+		6E32C46A1C19641F00C19D24 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C4691C19641F00C19D24 /* libicucore.tbd */; };
+		6E32C46C1C1964C000C19D24 /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C46B1C1964C000C19D24 /* libz.1.2.5.tbd */; };
+		6E32C46E1C19650B00C19D24 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C46D1C19650B00C19D24 /* libstdc++.tbd */; };
+		6E32C4701C19651500C19D24 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C46F1C19651500C19D24 /* CoreText.framework */; };
+		6E32C4721C19651F00C19D24 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C4711C19651F00C19D24 /* JavaScriptCore.framework */; };
+		6E4368041C183EB500DDAF4D /* 1334-750-0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E4368011C183EB500DDAF4D /* 1334-750-0.jpg */; };
+		6E4368051C183EB500DDAF4D /* 1334-750-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E4368021C183EB500DDAF4D /* 1334-750-1.jpg */; };
+		6E4368061C183EB500DDAF4D /* 1334-750-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E4368031C183EB500DDAF4D /* 1334-750-2.jpg */; };
 		6E6AAFE11B8CB8F100D69982 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6E6AAF581B8CB8F100D69982 /* AlipaySDK.bundle */; };
 		6E6AAFE21B8CB8F100D69982 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6AAF591B8CB8F100D69982 /* AlipaySDK.framework */; };
 		6E6AAFE31B8CB8F100D69982 /* NSArray+BlocksKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E6AAF621B8CB8F100D69982 /* NSArray+BlocksKit.m */; };
@@ -597,6 +607,16 @@
 		56FFFF6C1A3DDB2600106D33 /* RMStoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RMStoreViewController.h; sourceTree = "<group>"; };
 		56FFFF6D1A3DDB2600106D33 /* RMStoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMStoreViewController.m; sourceTree = "<group>"; };
 		56FFFF6E1A3DDB2600106D33 /* RMStoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RMStoreViewController.xib; sourceTree = "<group>"; };
+		6E0C67E11C1800410036EDB3 /* icon_huibenbao.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_huibenbao.png; sourceTree = "<group>"; };
+		6E32C4671C19350400C19D24 /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		6E32C4691C19641F00C19D24 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
+		6E32C46B1C1964C000C19D24 /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		6E32C46D1C19650B00C19D24 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		6E32C46F1C19651500C19D24 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		6E32C4711C19651F00C19D24 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		6E4368011C183EB500DDAF4D /* 1334-750-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1334-750-0.jpg"; sourceTree = "<group>"; };
+		6E4368021C183EB500DDAF4D /* 1334-750-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1334-750-1.jpg"; sourceTree = "<group>"; };
+		6E4368031C183EB500DDAF4D /* 1334-750-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1334-750-2.jpg"; sourceTree = "<group>"; };
 		6E6AAF581B8CB8F100D69982 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		6E6AAF591B8CB8F100D69982 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		6E6AAF5B1B8CB8F100D69982 /* BlocksKit+MessageUI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BlocksKit+MessageUI.h"; sourceTree = "<group>"; };
@@ -1323,13 +1343,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E32C4721C19651F00C19D24 /* JavaScriptCore.framework in Frameworks */,
+				6E32C4701C19651500C19D24 /* CoreText.framework in Frameworks */,
+				6E32C46E1C19650B00C19D24 /* libstdc++.tbd in Frameworks */,
+				C28CC87718B09E0C00530308 /* Security.framework in Frameworks */,
+				6E32C46C1C1964C000C19D24 /* libz.1.2.5.tbd in Frameworks */,
+				6E32C46A1C19641F00C19D24 /* libicucore.tbd in Frameworks */,
+				C21285CC191091630028F98A /* CoreTelephony.framework in Frameworks */,
+				C2E43E0F18CCDBE1003642B5 /* QuartzCore.framework in Frameworks */,
+				C21285CE1910917B0028F98A /* SystemConfiguration.framework in Frameworks */,
+				6E32C4681C19350400C19D24 /* libc++abi.tbd in Frameworks */,
 				3B53E9BA1A5E9DC800E59198 /* CoreFoundation.framework in Frameworks */,
 				6E6AB01B1B8CB8F100D69982 /* ShareSDKShareActionSheet.framework in Frameworks */,
 				C21285D01910922F0028F98A /* libz.dylib in Frameworks */,
 				6E6AB0171B8CB8F100D69982 /* libWeChatSDK.a in Frameworks */,
 				6E6AB01A1B8CB8F100D69982 /* ShareSDKFlatShareViewUI.framework in Frameworks */,
 				C2F913DE191268A900F3E411 /* libstdc++.dylib in Frameworks */,
-				C21285CC191091630028F98A /* CoreTelephony.framework in Frameworks */,
 				6E6AB0201B8CB8F100D69982 /* libMobClickLibrary.a in Frameworks */,
 				C2F913E0191268B300F3E411 /* libsqlite3.dylib in Frameworks */,
 				6ECB3AE31B5A55D600219174 /* libzbar.a in Frameworks */,
@@ -1337,7 +1366,6 @@
 				6E6AB01C1B8CB8F100D69982 /* TencentOpenAPI.framework in Frameworks */,
 				6E6AB00A1B8CB8F100D69982 /* QZoneConnection.framework in Frameworks */,
 				6E6AB0181B8CB8F100D69982 /* ShareSDK.framework in Frameworks */,
-				C21285CE1910917B0028F98A /* SystemConfiguration.framework in Frameworks */,
 				6E6AB0061B8CB8F100D69982 /* CopyConnection.framework in Frameworks */,
 				6E6AB00B1B8CB8F100D69982 /* SinaWeiboConnection.framework in Frameworks */,
 				C20B9FFE1900A9A9004E8508 /* libiconv.dylib in Frameworks */,
@@ -1345,7 +1373,6 @@
 				6E6AB00D1B8CB8F100D69982 /* TencentWeiboConnection.framework in Frameworks */,
 				6E6AB0211B8CB8F100D69982 /* libUPPayPlugin.a in Frameworks */,
 				6E6AB00C1B8CB8F100D69982 /* SMSConnection.framework in Frameworks */,
-				C28CC87718B09E0C00530308 /* Security.framework in Frameworks */,
 				6E6AB0101B8CB8F100D69982 /* AGCommon.framework in Frameworks */,
 				6E6AB0131B8CB8F100D69982 /* ShareSDKCoreService.framework in Frameworks */,
 				56A50E7B1A3DB8A200620633 /* Social.framework in Frameworks */,
@@ -1362,7 +1389,6 @@
 				6E6AB00F1B8CB8F100D69982 /* WeChatConnection.framework in Frameworks */,
 				C2E43E1118CCDC55003642B5 /* CoreMotion.framework in Frameworks */,
 				6E6AB0091B8CB8F100D69982 /* QQConnection.framework in Frameworks */,
-				C2E43E0F18CCDBE1003642B5 /* QuartzCore.framework in Frameworks */,
 				C2E43E0D18CCDBD7003642B5 /* AssetsLibrary.framework in Frameworks */,
 				C21C6D3B18C39A39004B7AEF /* AVFoundation.framework in Frameworks */,
 				6E6AB0141B8CB8F100D69982 /* libSinaWeiboSDK.a in Frameworks */,
@@ -2235,6 +2261,9 @@
 		C271F97218C4D21E005E652A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6E4368011C183EB500DDAF4D /* 1334-750-0.jpg */,
+				6E4368021C183EB500DDAF4D /* 1334-750-1.jpg */,
+				6E4368031C183EB500DDAF4D /* 1334-750-2.jpg */,
 				5661538D1A3B1DE100834F9A /* HomeViewController.h */,
 				5661538E1A3B1DE100834F9A /* HomeViewController.m */,
 				C271F97918C4D314005E652A /* AccountViewController.h */,
@@ -2252,6 +2281,7 @@
 		C271F98218C4EFF9005E652A /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				6E0C67E11C1800410036EDB3 /* icon_huibenbao.png */,
 				C2DCCE1819226F7400F8D927 /* qrbg.png */,
 				C215E5B518FF46220044046D /* icon_delete.png */,
 				C2B773C218C78B33009F61EF /* icon_comment.png */,
@@ -2492,6 +2522,12 @@
 		C28219C9189FDD6500807E71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E32C4711C19651F00C19D24 /* JavaScriptCore.framework */,
+				6E32C46F1C19651500C19D24 /* CoreText.framework */,
+				6E32C46D1C19650B00C19D24 /* libstdc++.tbd */,
+				6E32C46B1C1964C000C19D24 /* libz.1.2.5.tbd */,
+				6E32C4691C19641F00C19D24 /* libicucore.tbd */,
+				6E32C4671C19350400C19D24 /* libc++abi.tbd */,
 				3B53E9B91A5E9DC800E59198 /* CoreFoundation.framework */,
 				56A50E7A1A3DB8A200620633 /* Social.framework */,
 				56A50E781A3DB89900620633 /* Accounts.framework */,
@@ -3186,6 +3222,8 @@
 				6E832BDD1BCFA22A00697ED3 /* bbjhxuancai.png in Resources */,
 				C271F99618C4F004005E652A /* tab_cart_n.png in Resources */,
 				C2A5573B191AFDC600493FE4 /* sinaweibo.png in Resources */,
+				6E4368061C183EB500DDAF4D /* 1334-750-2.jpg in Resources */,
+				6E4368041C183EB500DDAF4D /* 1334-750-0.jpg in Resources */,
 				C29F7D3418E9F9AD00461C41 /* school.png in Resources */,
 				C271F99218C4F004005E652A /* tab_post_n.png in Resources */,
 				C2FC3DD518DF6369000A9682 /* movieBackwardSelected.png in Resources */,
@@ -3213,6 +3251,7 @@
 				3B2764E91A8A0F1B00365333 /* 进入应用页面.jpg in Resources */,
 				C2FC3D7B18DF4B76000A9682 /* flash_on.png in Resources */,
 				C271F99318C4F004005E652A /* tab_lesson_h.png in Resources */,
+				6E0C67E21C1800410036EDB3 /* icon_huibenbao.png in Resources */,
 				C2DC03C218EB2EF3006B65DE /* menu.png in Resources */,
 				C266DA7E191C048900274A93 /* share_weixin_h.png in Resources */,
 				3B2764E61A8A0C8600365333 /* 750-1334-pic.png in Resources */,
@@ -3255,6 +3294,7 @@
 				C271F98F18C4F004005E652A /* tab_home_h.png in Resources */,
 				3B2764AA1A89DEE100365333 /* YES-1.png in Resources */,
 				C2CA91C818CE0B0500C9EFBE /* crop_btn.png in Resources */,
+				6E4368051C183EB500DDAF4D /* 1334-750-1.jpg in Resources */,
 				6E6AB0151B8CB8F100D69982 /* WeiboSDK.bundle in Resources */,
 				C271F99518C4F004005E652A /* tab_cart_h.png in Resources */,
 				6EF706191BFB108900104DCB /* LICENSE in Resources */,

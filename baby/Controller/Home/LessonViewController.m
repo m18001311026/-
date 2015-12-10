@@ -132,7 +132,7 @@
     //chulijian
     
     _img=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, kScreen_width, kScreen_height)];
-    NSArray * picArray=[NSArray arrayWithObjects:@"bbjhchengshi",@"bbjhshuimo",@"bbjhtiankong",@"bbjhxuancai", @"bbjhhuangse",nil];
+    NSArray * picArray=[NSArray arrayWithObjects:@"1334-750-0.jpg",@"1334-750-1.jpg",@"1334-750-0.jpg",nil];
      _img.image=[UIImage imageNamed:[picArray objectAtIndex:arc4random()%5]];
 
     [self.view addSubview:_img];

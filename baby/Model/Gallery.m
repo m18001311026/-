@@ -45,7 +45,7 @@
 + (NSString *)primaryKey {
     return @"_id";
 }
-
+//等到画得ID
 + (Gallery *)getGalleryWithId:(long)_id {
     return (Gallery *)[[MemContainer me] getObject:[NSPredicate predicateWithFormat:@"_id = %ld", _id]
                                              clazz:[Gallery class]];

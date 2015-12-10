@@ -7,12 +7,15 @@
 //
 
 #import "ShareManager.h"
+#import <ShareSDK/ShareSDK.h>
 #import "WeiboApi.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "WXApi.h"
 #import "MobClick.h"
 #import "UIDeviceExtra.h"
+#import "WeiboSDK.h"
+
 
 @implementation ShareManager {
     
@@ -39,7 +42,7 @@ static ShareManager *_me = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        [ShareSDK registerApp:@"1b15372c2920"];
+        [ShareSDK registerApp:@"d3528fc0e720"];
         [self initializePlat];
     }
     return self;
@@ -51,41 +54,27 @@ static ShareManager *_me = nil;
      http://open.weixin.qq.com上注册应用，并将相关信息填写以下字段
      **/
 
-    [ShareSDK connectWeChatWithAppId:@"wxbd5609ded01a57da" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" wechatCls:[WXApi class]];
+//    [ShareSDK connectWeChatWithAppId:@"wxbd5609ded01a57da" appSecret:@"d4624c36b6795d1d99dcf0547af5443d" wechatCls:[WXApi class]];
 //    [WXApi registerApp:@"aLJkY6kglqiOksiN"];
-    
+    [ShareSDK connectWeChatWithAppId:@"wxbd5609ded01a57da"
+                           appSecret:@"d4624c36b6795d1d99dcf0547af5443d"
+                           wechatCls:[WXApi class]];
        /**
      连接新浪微博开放平台应用以使用相关功能，此应用需要引用SinaWeiboConnection.framework
      http://open.weibo.com上注册新浪微博开放平台应用，并将相关信息填写到以下字段
      **/
         [ShareSDK connectSinaWeiboWithAppKey:@"3326627843"
                                    appSecret:@"21efdddd0462022792a6033c321f28df"
-                                 redirectUri:@"http://www.sharesdk.cn"];
-//    [ShareSDK connectSinaWeiboWithAppKey:@"2212006707"
-//                               appSecret:@"0af0ef76b43f273d2b165eba1856258e"
-//                             redirectUri:@"http://www.children-sketchbook.com"];
-    /*
-    [ShareSDK connectSinaWeiboWithAppKey:@"2212006707"
-                               appSecret:@"0af0ef76b43f273d2b165eba1856258e"
-                             redirectUri:@"http://www.children-sketchbook.com"
-                             weiboSDKCls:[WeiboApi class]];
-    */
+                                 redirectUri:@"http://www.sharesdk.cn"
+                                 weiboSDKCls:[WeiboSDK class]];
     /**
      连接腾讯微博开放平台应用以使用相关功能，此应用需要引用TencentWeiboConnection.framework
      http://dev.t.qq.com上注册腾讯微博开放平台应用，并将相关信息填写到以下字段
      
-     如果需要实现SSO，需要导入libWeiboSDK.a，并引入WBApi.h，将WBApi类型传入接口
      **/
-    //    [ShareSDK connectTencentWeiboWithAppKey:@"801307650"
-    //                                  appSecret:@"ae36f4ee3946e1cbb98d6965b0b2ff5c"
-    //                                redirectUri:@"http://www.sharesdk.cn"
-    //                                   wbApiCls:[WeiboApi class]];
-    
-    
-    [ShareSDK connectTencentWeiboWithAppKey:@"801504129"
-                                  appSecret:@"dc8e3760d87d2855afaf1236a87f1943"
-                                redirectUri:HOMEPAGE
-                                   wbApiCls:[WeiboApi class]];
+    [ShareSDK connectTencentWeiboWithAppKey:@""
+                                  appSecret:@""
+                                redirectUri:@""];
     
     /**
      连接QQ空间应用以使用相关功能，此应用需要引用QZoneConnection.framework
@@ -93,32 +82,23 @@ static ShareManager *_me = nil;
      
      如果需要实现SSO，需要导入TencentOpenAPI.framework,并引入QQApiInterface.h和TencentOAuth.h，将QQApiInterface和TencentOAuth的类型传入接口
      **/
-    //    [ShareSDK connectQZoneWithAppKey:@"100371282"
-    //                           appSecret:@"aed9b0303e3ed1e27bae87c33761161d"
-    //                   qqApiInterfaceCls:[QQApiInterface class]
-    //                     tencentOAuthCls:[TencentOAuth class]];
-//    [ShareSDK connectQZoneWithAppKey:@"1101357992"
-//                           appSecret:@"b45db7ab03e07fbb6244440e27c48fe9"
-//                   qqApiInterfaceCls:[QQApiInterface class]
-//                     tencentOAuthCls:[TencentOAuth class]];
-//    
-//   // NSLog(@"")
-//    
-//    [ShareSDK connectQQWithAppId:@"101083578" qqApiCls:[QQApiInterface class]];
-//    
+    [ShareSDK connectQZoneWithAppKey:@""
+                           appSecret:@""
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
+
+    
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
      **/
     //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
     //    [ShareSDK connectQQWithAppId:@"QQ075BCD15" qqApiCls:[QQApi class]];
+    [ShareSDK connectQQWithQZoneAppKey:@""
+                     qqApiInterfaceCls:[QQApiInterface class]
+                       tencentOAuthCls:[TencentOAuth class]];
+
     
-    //    [ShareSDK connectQQWithQZoneAppKey:@"100371282"
-    //                     qqApiInterfaceCls:[QQApiInterface class]
-    //                       tencentOAuthCls:[TencentOAuth class]];
-//    [ShareSDK connectQQWithQZoneAppKey:@"1101357992"
-//                     qqApiInterfaceCls:[QQApiInterface class]
-//                       tencentOAuthCls:[TencentOAuth class]];
     //    //连接邮件
     //    [ShareSDK connectMail];
     //
@@ -129,13 +109,14 @@ static ShareManager *_me = nil;
 }
 
 - (void)shareContent:(id<ISSContent>)content {
+    
     [delegate.window bringSubviewToFront:delegate.window.rootViewController.view];
     
     if (![content title].length) {
-        [content setTitle:@"宝贝计画"];
+        [content setTitle:@"绘本宝"];
     }
     if (![content content].length) {
-        [content setContent:@"宝贝计画"];
+        [content setContent:@"绘本宝"];
     }
     if ([content url].length)
     {
@@ -156,15 +137,10 @@ static ShareManager *_me = nil;
                                      id<ISSPlatformShareInfo> statusInfo,
                                      id<ICMErrorInfo> error,
                                      BOOL end) {
-                                
+
                                 if (state == SSResponseStateSuccess) {
                                     
                                     [MobClick event:UMENG_SHARE_PLATFORM label:[NSString stringWithFormat:@"%d", type]];
-                                    
-                                    
-                                    
-                                    
-                                    
                                     if ([[content url] rangeOfString:GALLERY_PAGE].location != NSNotFound) {
                                         [MobClick event:UMENG_SHARE_CONTENT label:@"gallery"];
                                     } else if ([[content url] rangeOfString:LESSON_PAGE].location != NSNotFound) {
@@ -233,6 +209,9 @@ static ShareManager *_me = nil;
                        content:(NSString *)content
                          video:(NSString *)videoUrl
                        pageUrl:(NSString *)pageUrl {
+    
+    
+        //分享内容
     id<ISSContent> publishContent = [ShareSDK content:content
                                        defaultContent:nil
                                                 image:nil
@@ -275,6 +254,7 @@ static ShareManager *_me = nil;
 {
     
  // NSLog(@"1231231231    %@",content);
+    //发布内容的参数。PageUrl 内容
     id<ISSContent> publishContent = [ShareSDK content:content
                                        defaultContent:nil
                                                 image:[ShareSDK jpegImageWithImage:image quality:.8f]
@@ -382,9 +362,9 @@ static ShareManager *_me = nil;
     
     //在授权页面中添加关注官方微博
     [authOptions setFollowAccounts:[NSDictionary dictionaryWithObjectsAndKeys:
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"宝贝计画绘本美术"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"绘本宝"],
                                     SHARE_TYPE_NUMBER(ShareTypeSinaWeibo),
-                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"宝贝计画绘本美术"],
+                                    [ShareSDK userFieldWithType:SSUserFieldTypeName value:@"绘本宝"],
                                     SHARE_TYPE_NUMBER(ShareTypeTencentWeibo),
                                     nil]];
     
@@ -404,7 +384,7 @@ static ShareManager *_me = nil;
                             } else {
                                 [UI showAlert:@"分享失败，请稍后再试"];
                             }
-                            NSLog(@"分享失败,错误码:%ld,错误描述:%@", [error errorCode], [error errorDescription]);
+                            NSLog(@"分享失败,错误码:%ld,错误描述:%@", (long)[error errorCode], [error errorDescription]);
                         } else if (state == SSResponseStateCancel) {
                             //[UI showAlert:@"取消分享"];
                         }

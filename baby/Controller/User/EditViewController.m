@@ -258,7 +258,7 @@
             [cell addSubview:weixin];
         } else if (indexPath.row == 4) {
             title.frame = CGRectMake(10, 5, 160, 34);
-            title.text = @"是否在宝贝计画学习";
+//            title.text = @"是否在宝贝计画学习";
             
             if (!ifJoin) {
                 ifJoin = [[SimpleSegment alloc] initWithFrame:CGRectMake(180, 7, 130, 30)
@@ -274,7 +274,7 @@
             }
             //[ifJoin setTintColor:[UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1]];
             //[ifJoin setSelectedSegmentIndex:0];
-            [cell addSubview:ifJoin];
+//            [cell addSubview:ifJoin];
         }
     }
 
