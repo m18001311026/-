@@ -23,7 +23,7 @@
 #define PICTURE_WIDTH 80
 #define PICTURE_MARGIN 10
 #define PLACE_HOLDER @"点击图片描述..."
-
+#define type @"1":@"0"
 
 @implementation NewGalleryViewController
 
@@ -224,8 +224,10 @@
     }
     PostTask *task = [[PostTask alloc] initNewGallery:galleryMapArray
                                               content:introView.text
-                                                 city:0];
+                                                 city:0
+                                                 ];
     task.logicCallbackBlock = ^(bool succeeded, id userInfo) {
+        
         if (succeeded) {
             [UI showAlert:@"图片集添加成功"];
             /**/

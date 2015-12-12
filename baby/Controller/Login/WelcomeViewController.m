@@ -42,18 +42,23 @@
 
 
 
-@interface WelcomeViewController ()
+
+@interface WelcomeViewController ()<TencentSessionDelegate>
+
 @property (nonatomic,strong) NSString * access_token;
 @property (nonatomic,strong) NSString * openid;
 @end
 
 @implementation WelcomeViewController {
     TencentOAuth *_tencentOauth;
+    NSArray *_permissions;
+    UILabel *resultLable;
+    UILabel *tokenLable;
 }
 
 - (void)dealloc {
-    [_tencentOauth release];
     [super dealloc];
+    
     
 }
 
@@ -181,31 +186,31 @@
     
     //qq登录
     
-//    
-//    UIButton * qqLoginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//    qqLoginBtn.frame = CGRectMake(220, posY - 90, 70, 70);
-//    
-//    qqLoginBtn.backgroundColor=[UIColor blackColor];
-//    
-//    [qqLoginBtn setBackgroundColor:[UIColor clearColor]];
-//    [qqLoginBtn addTarget:self action:@selector(doLoginWithqq) forControlEvents:UIControlEventTouchUpInside];
-// //   qqLoginBtn.backgroundColor=[UIColor blackColor];
-//    [bg addSubview:qqLoginBtn];
-//    
-//    UIImageView *qqLoginImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qqlogin1.png"]];
-//    qqLoginImgView.frame = CGRectMake(20, 21, 30, 30);
-//    [qqLoginBtn addSubview:qqLoginImgView];
-//    [qqLoginImgView release];
-//    
-//    UILabel *qqLoginText = [[UILabel alloc] initWithFrame: CGRectMake(10, 44, 80, 40)];
-//  //  qqLoginText.backgroundColor=[UIColor cyanColor];
-//    qqLoginText.font = [UIFont systemFontOfSize:14];
-//    qqLoginText.text = @"QQ登录";
-//    qqLoginText.textColor = [UIColor whiteColor];
-//    [qqLoginBtn addSubview:qqLoginText];
-//    [qqLoginText release];
-//    
-//    
+    
+    UIButton * qqLoginBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    qqLoginBtn.frame = CGRectMake(220, posY - 90, 70, 70);
+    
+    qqLoginBtn.backgroundColor=[UIColor blackColor];
+    
+    [qqLoginBtn setBackgroundColor:[UIColor clearColor]];
+    [qqLoginBtn addTarget:self action:@selector(doLoginWithqq) forControlEvents:UIControlEventTouchUpInside];
+ //   qqLoginBtn.backgroundColor=[UIColor blackColor];
+    [bg addSubview:qqLoginBtn];
+    
+    UIImageView *qqLoginImgView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"qqlogin1.png"]];
+    qqLoginImgView.frame = CGRectMake(20, 21, 30, 30);
+    [qqLoginBtn addSubview:qqLoginImgView];
+    [qqLoginImgView release];
+    
+    UILabel *qqLoginText = [[UILabel alloc] initWithFrame: CGRectMake(10, 44, 80, 40)];
+  //  qqLoginText.backgroundColor=[UIColor cyanColor];
+    qqLoginText.font = [UIFont systemFontOfSize:14];
+    qqLoginText.text = @"QQ登录";
+    qqLoginText.textColor = [UIColor whiteColor];
+    [qqLoginBtn addSubview:qqLoginText];
+    [qqLoginText release];
+    
+    
 //  
     
     //微博登陆增加处
@@ -229,6 +234,11 @@
     sinaLoginText.textColor = [UIColor whiteColor];
     [weiboLoginBtn addSubview:sinaLoginText];
     [sinaLoginText release];
+    
+    
+    
+    
+    
     
 ////    //微信登陆
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]])
@@ -272,7 +282,104 @@
     [super didReceiveMemoryWarning];
 
 }
-#pragma  mark -  Actions
+#pragma  mark - qq
+/*-(void)getLoginInfoWithLoginType:(enum LoginType)type
+{
+    
+    id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES allowCallback:YES scopes:nil powerByHidden:YES followAccounts:nil authViewStyle:SSAuthViewStylePopup viewDelegate:nil authManagerViewDelegate:nil];
+    switch (type) {
+        case LOGINBYQQ:
+        {
+            NSLog(@"获取三方登录信息%d",type);
+            [ShareSDK getUserInfoWithType:ShareTypeQQSpace authOptions:authOptions result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                NSLog(@"error = %@",error);
+                if(result){
+                    [[NSUserDefaults standardUserDefaults] setObject:[[userInfo sourceData] objectForKey:@"uid"] forKey:@"qqLoginUID"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    NSLog(@"qqLoginUID = %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"qqLoginUID"]);
+                    if([userInfo sourceData]){
+                        
+                        [self loginWithLoginType:type];
+                        
+                    }
+                }
+                else{
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先安装QQ客户端或尝试其他方式登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alertView show];
+                    NSLog(@"qq登录失败");
+                }
+                NSLog(@"qquserInfo = %@",[userInfo sourceData]);
+            }];
+        }
+            break;
+        case LOGINBYSINA:
+        {
+            [ShareSDK getUserInfoWithType:ShareTypeSinaWeibo authOptions:authOptions result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                if(result){
+                    [[NSUserDefaults standardUserDefaults] setObject:[[userInfo sourceData] objectForKey:@"id"] forKey:@"sinaLoginUID"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    NSLog(@"sinauserInfo = %@",[userInfo sourceData]);
+                    NSLog(@"sinaLoginUID = %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"sinaLoginUID"]);
+                    if([userInfo sourceData]){
+                        [self loginWithLoginType:type];
+                    }
+                }else{
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先安装新浪客户端或尝试其他方式登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alertView show];
+                }
+            }];
+        }
+            break;
+        case LOGINBYWECHAT:
+        {
+            [ShareSDK getUserInfoWithType:ShareTypeWeixiTimeline authOptions:authOptions result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
+                if(result)
+                {
+                    [[NSUserDefaults standardUserDefaults] setObject:[[userInfo sourceData] objectForKey:@"unionid"] forKey:@"wechatLoginUID"];
+                    [[NSUserDefaults standardUserDefaults] synchronize];
+                    if([userInfo sourceData]){
+                        [self loginWithLoginType:type];
+                    }
+                    NSLog(@"userInfo1 = %@",[userInfo sourceData]);
+                }else{
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先安装微信客户端或尝试其他方式登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
+                    [alertView show];
+                    NSLog(@"userInfo2 = %@",[userInfo sourceData]);
+                }
+            }];
+        }
+            break;
+        default:
+            break;
+    }
+}
+ */
+
+- (void)doLoginWithqq
+{
+
+//  [self dismissKeyboard];
+
+    if ([TencentOAuth iphoneQQInstalled])
+    {
+        _tencentOauth = [[TencentOAuth alloc] initWithAppId:@"1104925921" andDelegate:self];
+        
+        
+        _permissions = [NSArray arrayWithObjects:kOPEN_PERMISSION_GET_INFO, kOPEN_PERMISSION_GET_USER_INFO, kOPEN_PERMISSION_GET_SIMPLE_USER_INFO, nil];
+        
+        [_tencentOauth authorize:_permissions inSafari:NO];
+
+    }else
+    {
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"由于您的手机缺少QQ客户端，无法完成授权登录！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
+        [alert show];
+    }
+    
+}
+
+
+
+#pragma  mark -  Actions weixin
 -(void)doweixin:(UIButton *)sender{
     SendAuthReq* req =[[SendAuthReq alloc ] init];
     req.scope = @"snsapi_userinfo,snsapi_base";
@@ -334,86 +441,6 @@
     
     
 }
-//微信
--(void)doweixin{
-    
-    
-    [ShareSDK getUserInfoWithType:ShareTypeWeixiTimeline authOptions:nil result:^(BOOL result, id<ISSPlatformUser> userInfo, id<ICMErrorInfo> error) {
-            NSLog(@"userInfo = %@",userInfo);
-            if(result)
-            {
-                NSString * nickName =[[userInfo sourceData] objectForKey:@"nickname"];
-                if([userInfo sourceData]){
-                    // 注册
-                    UserTask *task = [[UserTask alloc] initRegister:nickName
-                                                           password:@""
-                                                           atSchool:NO
-                                                         introducer:@""];
-                    task.responseCallbackBlock = ^(bool successful, id userInfo) {
-                        if (successful) {
-                            // 登陆
-                            UserTask *loginTask = [[UserTask alloc] initLogin:nickName password:@""];
-                            
-                            loginTask.logicCallbackBlock = ^(bool successful, id userInfo) {
-                                if (successful) {
-
-                            [UI showAlert:@"登录成功"];
-                            [ctr popToRootViewControllerWithAnimation:ViewSwitchAnimationSwipeL2R];
-                            [[NSNotificationCenter defaultCenter] postNotificationName:UserDidLoginNotification
-                                                                                object:nil];
-                           
-                            
-                        } else {
-                            // 登陆
-                            [UI showAlert:@"登录失败，请检查网络环境或者帐号密码"];
-                            
-                            
-                        }
-                            };
-                            [TaskQueue addTaskToQueue:loginTask];
-                            [loginTask release];
-                        }
-                        else{
-                        }
-                    };
-                    [TaskQueue addTaskToQueue:task];
-                    [task release];
-    
-    
-                    };
-            }else{
-                UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"提示" message:@"请先安装微信客户端或尝试其他方式登录" delegate:nil cancelButtonTitle:@"确定" otherButtonTitles: nil];
-                [alertView show];
-                NSLog(@"userInfo2 = %@",[userInfo sourceData]);
-            }
-            }];
-       
-    }
-
-
-//
-//    
-
-//- (void)backBtnTouched
-//{
-//    WelcomeViewController * wel=[[WelcomeViewController alloc]init];
-//    LessonViewController * les=[[LessonViewController alloc]init];
-//    RootViewController * rot=[[RootViewController alloc]init];
-//    
-//    TabbarController * tab=[[TabbarController alloc]init];
-//    
-//    [ctr pushViewController:rot animation:YES];
-//  //  [wel popoverPresentationController];
-//    
-////    [self.navigationController popViewControllerAnimated:YES];
-//    
-//    
-//    
-//    
-//    
-//}
-
-
 
 //chulijian
 #pragma mark weixin
@@ -481,25 +508,6 @@
     [ctr pushViewController:regVC animation:ViewSwitchAnimationSwipeR2L];
     [regVC release];
 }
-
-//- (void)doLoginWithqq2
-//{
-//    [self dismissKeyboard];
-//
-//    if ([TencentOAuth iphoneQQInstalled])
-//    {
-//        _tencentOauth = [[TencentOAuth alloc] initWithAppId:@"1101357992" andDelegate:self];
-//        NSArray *permissions = [NSArray arrayWithObjects:@"get_user_info", @"get_simple_userinfo", @"add_t", nil];
-//        [_tencentOauth authorize:permissions];
-//    }else
-//    {
-//        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"由于您的手机缺少QQ客户端，无法完成授权登录！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
-//        [alert show];
-//    }
-//
-//}
-
-
 
 
 - (void)resetPassword {

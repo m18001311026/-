@@ -9,8 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "BBViewController.h"
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/TencentOAuthObject.h>
+#import <TencentOpenAPI/TencentMessageObject.h>
+#import <TencentOpenAPI/TencentApiInterface.h>
 
-@interface WelcomeViewController : BBViewController <UITextFieldDelegate,TencentSessionDelegate,UIAlertViewDelegate>
+
+
+
+@interface WelcomeViewController : BBViewController <UITextFieldDelegate,TencentSessionDelegate,TencentApiInterfaceDelegate,TencentLoginDelegate,UIAlertViewDelegate>
 {
     UITextField *userName, *password;
     UIImageView *bg;

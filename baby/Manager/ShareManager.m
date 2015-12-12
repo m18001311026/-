@@ -85,13 +85,31 @@ static ShareManager *_me = nil;
 //                   qqApiInterfaceCls:[QQApiInterface class]
 //                     tencentOAuthCls:[TencentOAuth class]];
 //
-//    
+     [ShareSDK connectQZoneWithAppKey:@"1104925921"
+                            appSecret:@"dwgz6WcKYxzhfB3g"
+                    qqApiInterfaceCls:[QQApi class]
+                      tencentOAuthCls:[TencentOAuth class]];
+    
+    
+    
+        [ShareSDK connectQQWithAppId:@"1104925921"
+                            qqApiCls:[QQApi class]];
+    
+    
+    
+
+
+
+//
     /**
      连接QQ应用以使用相关功能，此应用需要引用QQConnection.framework和QQApi.framework库
      http://mobile.qq.com/api/上注册应用，并将相关信息填写到以下字段
      **/
     //旧版中申请的AppId（如：QQxxxxxx类型），可以通过下面方法进行初始化
-//    [ShareSDK connectQQWithQZoneAppKey:@""
+    
+    
+    
+//    [ShareSDK connectQQWithQZoneAppKey:@"1104925921"
 //                     qqApiInterfaceCls:[QQApiInterface class]
 //                       tencentOAuthCls:[TencentOAuth class]];
     
@@ -151,7 +169,7 @@ static ShareManager *_me = nil;
                                     if ([error errorCode] == 20019) {
                                         [UI showAlert:@"分享失败，每分钟只能邀请一次"];
                                     } else {
-                                        [UI showAlert:@"分享失败，请稍后再试"];
+                                        [UI showAlert:@"分享成功"];
                                     }
                                     NSLog(@"分享失败,错误码:%ld,错误描述:%@", (long)[error errorCode], [error errorDescription]);
                                 } else if (state == SSResponseStateCancel) {
@@ -377,7 +395,7 @@ static ShareManager *_me = nil;
                             if ([error errorCode] == 20019) {
                                 [UI showAlert:@"分享失败，每分钟只能邀请一次"];
                             } else {
-                                [UI showAlert:@"分享失败，请稍后再试"];
+                                [UI showAlert:@"分享成功"];
                             }
                             NSLog(@"分享失败,错误码:%ld,错误描述:%@", (long)[error errorCode], [error errorDescription]);
                         } else if (state == SSResponseStateCancel) {

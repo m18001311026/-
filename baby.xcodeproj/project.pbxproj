@@ -93,6 +93,9 @@
 		6E32C46E1C19650B00C19D24 /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C46D1C19650B00C19D24 /* libstdc++.tbd */; };
 		6E32C4701C19651500C19D24 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C46F1C19651500C19D24 /* CoreText.framework */; };
 		6E32C4721C19651F00C19D24 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E32C4711C19651F00C19D24 /* JavaScriptCore.framework */; };
+		6E37C8B01C1BD901002555D3 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E37C8AF1C1BD901002555D3 /* libiconv.tbd */; };
+		6E37C8B21C1BD92B002555D3 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E37C8B11C1BD92B002555D3 /* libsqlite3.tbd */; };
+		6E37C8B41C1BD94C002555D3 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E37C8B31C1BD94C002555D3 /* libz.tbd */; };
 		6E4368041C183EB500DDAF4D /* 1334-750-0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E4368011C183EB500DDAF4D /* 1334-750-0.jpg */; };
 		6E4368051C183EB500DDAF4D /* 1334-750-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E4368021C183EB500DDAF4D /* 1334-750-1.jpg */; };
 		6E4368061C183EB500DDAF4D /* 1334-750-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6E4368031C183EB500DDAF4D /* 1334-750-2.jpg */; };
@@ -614,6 +617,9 @@
 		6E32C46D1C19650B00C19D24 /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		6E32C46F1C19651500C19D24 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		6E32C4711C19651F00C19D24 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		6E37C8AF1C1BD901002555D3 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		6E37C8B11C1BD92B002555D3 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		6E37C8B31C1BD94C002555D3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		6E4368011C183EB500DDAF4D /* 1334-750-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1334-750-0.jpg"; sourceTree = "<group>"; };
 		6E4368021C183EB500DDAF4D /* 1334-750-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1334-750-1.jpg"; sourceTree = "<group>"; };
 		6E4368031C183EB500DDAF4D /* 1334-750-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "1334-750-2.jpg"; sourceTree = "<group>"; };
@@ -1343,15 +1349,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E37C8B41C1BD94C002555D3 /* libz.tbd in Frameworks */,
+				6E32C46E1C19650B00C19D24 /* libstdc++.tbd in Frameworks */,
+				C21285CC191091630028F98A /* CoreTelephony.framework in Frameworks */,
+				6E37C8B21C1BD92B002555D3 /* libsqlite3.tbd in Frameworks */,
+				C28219CD189FDD6500807E71 /* CoreGraphics.framework in Frameworks */,
+				C21285CE1910917B0028F98A /* SystemConfiguration.framework in Frameworks */,
+				6E37C8B01C1BD901002555D3 /* libiconv.tbd in Frameworks */,
+				C28CC87718B09E0C00530308 /* Security.framework in Frameworks */,
 				6E32C4721C19651F00C19D24 /* JavaScriptCore.framework in Frameworks */,
 				6E32C4701C19651500C19D24 /* CoreText.framework in Frameworks */,
-				6E32C46E1C19650B00C19D24 /* libstdc++.tbd in Frameworks */,
-				C28CC87718B09E0C00530308 /* Security.framework in Frameworks */,
 				6E32C46C1C1964C000C19D24 /* libz.1.2.5.tbd in Frameworks */,
 				6E32C46A1C19641F00C19D24 /* libicucore.tbd in Frameworks */,
-				C21285CC191091630028F98A /* CoreTelephony.framework in Frameworks */,
 				C2E43E0F18CCDBE1003642B5 /* QuartzCore.framework in Frameworks */,
-				C21285CE1910917B0028F98A /* SystemConfiguration.framework in Frameworks */,
 				6E32C4681C19350400C19D24 /* libc++abi.tbd in Frameworks */,
 				3B53E9BA1A5E9DC800E59198 /* CoreFoundation.framework in Frameworks */,
 				6E6AB01B1B8CB8F100D69982 /* ShareSDKShareActionSheet.framework in Frameworks */,
@@ -1362,7 +1372,6 @@
 				6E6AB0201B8CB8F100D69982 /* libMobClickLibrary.a in Frameworks */,
 				C2F913E0191268B300F3E411 /* libsqlite3.dylib in Frameworks */,
 				6ECB3AE31B5A55D600219174 /* libzbar.a in Frameworks */,
-				C28219CD189FDD6500807E71 /* CoreGraphics.framework in Frameworks */,
 				6E6AB01C1B8CB8F100D69982 /* TencentOpenAPI.framework in Frameworks */,
 				6E6AB00A1B8CB8F100D69982 /* QZoneConnection.framework in Frameworks */,
 				6E6AB0181B8CB8F100D69982 /* ShareSDK.framework in Frameworks */,
@@ -2522,6 +2531,9 @@
 		C28219C9189FDD6500807E71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E37C8B31C1BD94C002555D3 /* libz.tbd */,
+				6E37C8B11C1BD92B002555D3 /* libsqlite3.tbd */,
+				6E37C8AF1C1BD901002555D3 /* libiconv.tbd */,
 				6E32C4711C19651F00C19D24 /* JavaScriptCore.framework */,
 				6E32C46F1C19651500C19D24 /* CoreText.framework */,
 				6E32C46D1C19650B00C19D24 /* libstdc++.tbd */,

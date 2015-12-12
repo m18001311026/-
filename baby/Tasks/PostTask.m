@@ -70,13 +70,13 @@
         NSString *type = [[NSUserDefaults standardUserDefaults] objectForKey:@"glSegementIndex"];
         
         if (type == nil)  {
-            type = @"1";
+            type = @"0";
 
         }
-        if([type isEqualToString:@"1"]){
-            type =@"0";
+        if([type isEqualToString:@"0"]){
+            type =@"1";
         }else{
-            type = @"1";
+            type = @"0";
         }
         
         [galleryJson setObject:type forKey:@"type"];

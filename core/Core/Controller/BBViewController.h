@@ -7,7 +7,10 @@
 //
 
 #import "NavigationControl.h"
-
+#import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/TencentApiInterface.h>
+#import <TencentOpenAPI/TencentMessageObject.h>
+#import <TencentOpenAPI/TencentOAuthObject.h>
 @interface BBViewController : UIViewController {    
     UILabel *bbTitleLabel;
     UIView *bbTopbar;

@@ -48,8 +48,8 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wb2212006707</string>
-				<string>QQ060669BA</string>
-				<string>tencent101083578</string>
+				<string></string>
+				<string>tencent1104925921</string>
 				<string>wxbd5609ded01a57da</string>
 			</array>
 		</dict>
@@ -60,7 +60,7 @@
 			<string>tencentopenapi</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>tencent1101357992</string>
+				<string>tencent1104925921</string>
 			</array>
 		</dict>
 		<dict>

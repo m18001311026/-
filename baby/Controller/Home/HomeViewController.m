@@ -198,7 +198,7 @@
     
     
     
-    [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",index] forKey:@"glSegementIndex"];
+
     
     
     [self loadGallery];

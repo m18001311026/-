@@ -13,6 +13,7 @@
 - (id)initNewPicture:(UIImage *)image voice:(NSData *)voice length:(int)voiceLength;
 
 - (id)initNewGallery:(NSArray *)pictureIds content:(NSString *)content city:(int)city;
+- (id)initNewGallery:(NSArray *)pictureIds content:(NSString *)content city:(int)city type:(int)type;
 
 - (id)initNewGCommentForGallery:(long)galleryId
                         replyTo:(NSString *)replyTo

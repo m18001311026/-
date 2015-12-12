@@ -532,6 +532,10 @@ NavigationControl *ctr;
 
 -(void)onResp:(BaseReq *)resp
 {
+    if([resp isKindOfClass:[SendMessageToWXResp class]])
+    {
+        NSLog(@"分享回调");
+    }else{
     /*
      ErrCode ERR_OK = 0(用户同意)
      ERR_AUTH_DENIED = -4（用户拒绝授权）
@@ -552,7 +556,7 @@ NavigationControl *ctr;
     
 }
 
-
+}
 
 
 

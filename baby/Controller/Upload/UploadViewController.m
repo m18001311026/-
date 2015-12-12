@@ -9,7 +9,7 @@
 #import "UploadViewController.h"
 #import "NewGalleryViewController.h"
 #import "NewPictureViewController.h"
-
+#import "PostTask.h"
 @interface UploadViewController ()
 
 @end
@@ -39,7 +39,7 @@
         multiBtn.backgroundColor = [UIColor whiteColor];
         [multiBtn setTitleColor:[UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1] forState:UIControlStateNormal];
         [multiBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        [multiBtn setTitle:@"经典绘本" forState:UIControlStateNormal];
+        [multiBtn setTitle:@"原创绘本" forState:UIControlStateNormal];
         multiBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [multiBtn addTarget:self action:@selector(newMultiPicture) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:multiBtn];
@@ -53,10 +53,10 @@
         singleBtn.backgroundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
         [singleBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         [singleBtn setTitleColor:[UIColor grayColor] forState:UIControlStateHighlighted];
-        [singleBtn setTitle:@"原创绘本" forState:UIControlStateNormal];
+        [singleBtn setTitle:@"经典绘本" forState:UIControlStateNormal];
         singleBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [singleBtn addTarget:self action:@selector(newSinglePicture) forControlEvents:UIControlEventTouchUpInside];
-//        [self.view addSubview:singleBtn];
+        [self.view addSubview:singleBtn];
         
 
     }
@@ -80,7 +80,7 @@
 }
 
 - (void)newSinglePicture {
-    
+            [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"0"] forKey:@"glSegementIndex"];
         NewGalleryViewController *ngVC = [[NewGalleryViewController alloc] init];
     
 //        ngVC.maxPictureCount = 1;
@@ -96,6 +96,7 @@
 }
 
 - (void)newMultiPicture {
+     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"1"] forKey:@"glSegementIndex"];
     NewGalleryViewController *ngVC = [[NewGalleryViewController alloc] init];
     [ctr pushViewController:ngVC animation:ViewSwitchAnimationBounce];
     [ngVC release];
