@@ -9,14 +9,14 @@
 #import "ShareTask.h"
 #import "User.h"
 #import "MemContainer.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 
 
 @implementation ShareTask
 
 - (id)initContactMatch:(NSString *)contacts {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"user_Search"];
         [self addParameter:@"mobiles" value:contacts];

@@ -13,7 +13,7 @@
 
 #import "UserTask.h"
 #import "TaskQueue.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 
 

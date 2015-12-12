@@ -17,7 +17,7 @@
 
 
 #import "UIButtonExtra.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "TabbarController.h"
 #import "ShareManager.h"
 
@@ -415,7 +415,7 @@
 
 #pragma UserVoiceInfoViewDelegate
 - (void)showUserDetail:(long)userId {
-    if (userId == [ConfigManager me].userId) {
+    if (userId == [LZConfigManager me].userId) {
         SelfGalleryViewController *sCtr = [[SelfGalleryViewController alloc] init];
         [ctr pushViewController:sCtr animation:ViewSwitchAnimationBounce];
         [sCtr release];

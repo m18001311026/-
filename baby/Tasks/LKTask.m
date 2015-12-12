@@ -7,7 +7,7 @@
 //
 
 #import "LKTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "Gallery.h"
 #import "User.h"
@@ -15,7 +15,7 @@
 @implementation LKTask
 //请求添加取消关注
 - (id)initGalleryRelation:(long)galleryId like:(bool)like {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"gallery_Relation"];
         [self addParameter:@"gallery_id" value:[NSString stringWithFormat:@"%ld", galleryId]];
@@ -43,7 +43,7 @@
 
 - (id)initUserRelation:(long)userId follow:(bool)follow
 {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"user_Relation"];
         [self addParameter:@"user_id" value:[NSString stringWithFormat:@"%ld", userId]];

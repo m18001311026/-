@@ -10,7 +10,7 @@
 #import "ImageView.h"
 #import "UIColorExtra.h"
 #import "Lesson.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 @implementation BoughtLessonCell
 
@@ -88,8 +88,8 @@
     time.text = [TOOL stringFromUnixTime:lesson.createTime];
     moneyLable.text = [NSString stringWithFormat:@"￥%0.01f", lesson.price];
     
-    moneyLable.hidden = [ConfigManager me].runInReviewMode;
-    buy.hidden = [ConfigManager me].runInReviewMode;
+    moneyLable.hidden = [LZConfigManager me].runInReviewMode;
+    buy.hidden = [LZConfigManager me].runInReviewMode;
 }
 
 

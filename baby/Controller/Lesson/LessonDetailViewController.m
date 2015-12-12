@@ -17,7 +17,7 @@
 #import "LessonCommentView.h"
 #import "LessonRecommendView.h"
 #import "ShareManager.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 #import "OrderTask.h"
 #import "TaskQueue.h"
@@ -191,13 +191,13 @@
 //- (void)buyLesson {
 //    UIBlockSheet *sheet = [[UIBlockSheet alloc] initWithTitle:@"请选择支付方式"];
 //    
-//    if ([ConfigManager me].enableAlipay) {
+//    if ([LZConfigManager me].enableAlipay) {
 //        [sheet addButtonWithTitle:@"支付宝" block: ^{
 //            [self checkoutWithAlipay];
 //        }];
 //    }
 //    
-//    if ([ConfigManager me].enableUnionPay) {
+//    if ([LZConfigManager me].enableUnionPay) {
 //        [sheet addButtonWithTitle: @"银联" block: ^{
 //            [self checkoutWithUnionpay];
 //        }];

@@ -7,7 +7,7 @@
 //
 
 #import "SystemTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 @implementation SystemTask
 
@@ -31,7 +31,7 @@
                 
                 float version = [[userInfo objectForKey:@"version"] floatValue];
                 
-                [[ConfigManager me] updateServerVesion:version andReviewStatus:inReview];
+                [[LZConfigManager me] updateServerVesion:version andReviewStatus:inReview];
                 
                 [self doLogicCallBack:succeeded info:nil];
             } else {
@@ -57,7 +57,7 @@
                     unionPay = [[config objectForKey:@"unionpay"] boolValue];
                 }
                 
-                [[ConfigManager me] updateAlipay:alipay unionPay:unionPay];
+                [[LZConfigManager me] updateAlipay:alipay unionPay:unionPay];
                 
                 [self doLogicCallBack:succeeded info:nil];
             } else {

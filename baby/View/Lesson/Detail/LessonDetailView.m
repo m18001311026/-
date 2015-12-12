@@ -12,7 +12,7 @@
 #import "CartTask.h"
 #import "TaskQueue.h"
 #import "UserLessonLK.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 #define BAR_HEIGHT 60
 
@@ -159,8 +159,8 @@
 }
 
 - (void)updateLayout {
-    priceUnit.hidden = [ConfigManager me].runInReviewMode;
-    price.hidden = [ConfigManager me].runInReviewMode;
+    priceUnit.hidden = [LZConfigManager me].runInReviewMode;
+    price.hidden = [LZConfigManager me].runInReviewMode;
     
     Lesson *l = [Lesson getLessonWithId:self.lessonId];
     
@@ -182,9 +182,9 @@
 }
 
 - (void)updateCartBtn {
-    bar.hidden = [ConfigManager me].runInReviewMode;
+    bar.hidden = [LZConfigManager me].runInReviewMode;
     
-    UserLessonLK *lk = [UserLessonLK getUserLessonLK:[ConfigManager me].userId lesson:self.lessonId];
+    UserLessonLK *lk = [UserLessonLK getUserLessonLK:[LZConfigManager me].userId lesson:self.lessonId];
     if (!lk) {
         [cart setTitle:@"放入购物车" forState:UIControlStateNormal];
     } else {
@@ -201,7 +201,7 @@
 }
 
 - (void)updateRelation {
-//    UserLessonLK *lk = [UserLessonLK getUserLessonLK:[ConfigManager me].userId lesson:self.lessonId];
+//    UserLessonLK *lk = [UserLessonLK getUserLessonLK:[LZConfigManager me].userId lesson:self.lessonId];
 //    if (!lk) {
 //        CartTask *task = [[CartTask alloc] initLessonRelationQuery:self.lessonId];
 //        task.logicCallbackBlock = ^(bool succeeded, id userInfo) {
@@ -215,7 +215,7 @@
 }
 
 - (void)editRelation {
-    UserLessonLK *lk = [UserLessonLK getUserLessonLK:[ConfigManager me].userId lesson:self.lessonId];
+    UserLessonLK *lk = [UserLessonLK getUserLessonLK:[LZConfigManager me].userId lesson:self.lessonId];
     if (!lk) {
         [self updateRelation];
     } else {

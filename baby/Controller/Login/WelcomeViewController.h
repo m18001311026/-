@@ -16,11 +16,13 @@
 
 
 
-@interface WelcomeViewController : BBViewController <UITextFieldDelegate,TencentSessionDelegate,TencentApiInterfaceDelegate,TencentLoginDelegate,UIAlertViewDelegate>
+@interface WelcomeViewController : BBViewController <UITextFieldDelegate,TencentSessionDelegate,TencentApiInterfaceDelegate,UIAlertViewDelegate>
+
 {
     UITextField *userName, *password;
     UIImageView *bg;
 
 }
+@property (retain , nonatomic)    TencentOAuth *tencentOauth;
 
 @end

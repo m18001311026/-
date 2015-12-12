@@ -7,13 +7,13 @@
 //
 
 #import "FeedbackTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 
 @implementation FeedbackTask
 
 - (id)initFeedback:(NSString *)content {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"feedback_Add"];
         [self addParameter:@"content" value:content];

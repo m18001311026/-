@@ -13,7 +13,7 @@
 #import "GComment.h"
 #import "MemContainer.h"
 #import "GalleryPictureLK.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 #import "Session.h"
 
@@ -232,7 +232,7 @@
 }
 
 - (id)initLikeGalleryListAtPage:(int)page count:(int)count {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"gallery_Like"];
         [self addParameter:@"page" value:[NSString stringWithFormat:@"%d", page]];
@@ -266,7 +266,7 @@
 
 
 - (id)initDeleteGallery:(long)galleryId {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"gallery_delete"];
         [self addParameter:@"gallery_id" value:[NSString stringWithFormat:@"%ld", galleryId]];
@@ -372,7 +372,7 @@
 {
 //    self = [super initWithUrl:SERVERURL method:POST];
     
-    self = [super initWithUrl:SERVERURL method:GET session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:GET session:[[LZConfigManager me] getSession].session];
     if (self)
     {
         
@@ -417,7 +417,7 @@
 }
 
 - (id)initGalleryDetail:(long)galleryId {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"gallery_query"];
         [self addParameter:@"gallery_id" value:[NSString stringWithFormat:@"%ld", galleryId]];
@@ -455,7 +455,7 @@
 }
 
 - (id)initDeleteGComment:(long)commentId {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"gcomment_delete"];
         [self addParameter:@"comment_id" value:[NSString stringWithFormat:@"%ld", commentId]];

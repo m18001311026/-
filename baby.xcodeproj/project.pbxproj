@@ -470,7 +470,7 @@
 		C2FAAF591952BEF100EC938A /* ChineseToPinyin.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAAF581952BEF100EC938A /* ChineseToPinyin.m */; };
 		C2FAAF5C1952C29700EC938A /* ShareTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FAAF5B1952C29700EC938A /* ShareTask.m */; };
 		C2FB7DDB18C360F0006C687E /* UserTask.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB7DDA18C360F0006C687E /* UserTask.m */; };
-		C2FB7DDE18C365D8006C687E /* ConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB7DDD18C365D8006C687E /* ConfigManager.m */; };
+		C2FB7DDE18C365D8006C687E /* LZConfigManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB7DDD18C365D8006C687E /* LZConfigManager.m */; };
 		C2FB7DE118C36F76006C687E /* Session.m in Sources */ = {isa = PBXBuildFile; fileRef = C2FB7DE018C36F76006C687E /* Session.m */; };
 		C2FC3D7A18DF4B76000A9682 /* flash_off.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FC3D7818DF4B76000A9682 /* flash_off.png */; };
 		C2FC3D7B18DF4B76000A9682 /* flash_on.png in Resources */ = {isa = PBXBuildFile; fileRef = C2FC3D7918DF4B76000A9682 /* flash_on.png */; };
@@ -1278,8 +1278,8 @@
 		C2FAAF5B1952C29700EC938A /* ShareTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShareTask.m; sourceTree = "<group>"; };
 		C2FB7DD918C360F0006C687E /* UserTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTask.h; sourceTree = "<group>"; };
 		C2FB7DDA18C360F0006C687E /* UserTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTask.m; sourceTree = "<group>"; };
-		C2FB7DDC18C365D8006C687E /* ConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigManager.h; sourceTree = "<group>"; };
-		C2FB7DDD18C365D8006C687E /* ConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigManager.m; sourceTree = "<group>"; };
+		C2FB7DDC18C365D8006C687E /* LZConfigManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZConfigManager.h; sourceTree = "<group>"; };
+		C2FB7DDD18C365D8006C687E /* LZConfigManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZConfigManager.m; sourceTree = "<group>"; };
 		C2FB7DDF18C36F76006C687E /* Session.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Session.h; sourceTree = "<group>"; };
 		C2FB7DE018C36F76006C687E /* Session.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Session.m; sourceTree = "<group>"; };
 		C2FC3D7818DF4B76000A9682 /* flash_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flash_off.png; sourceTree = "<group>"; };
@@ -2786,8 +2786,8 @@
 		C29BFA7818C30FC7006AC9ED /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				C2FB7DDC18C365D8006C687E /* ConfigManager.h */,
-				C2FB7DDD18C365D8006C687E /* ConfigManager.m */,
+				C2FB7DDC18C365D8006C687E /* LZConfigManager.h */,
+				C2FB7DDD18C365D8006C687E /* LZConfigManager.m */,
 				C21C6D3718C39998004B7AEF /* AudioRecorder.h */,
 				C21C6D3818C39998004B7AEF /* AudioRecorder.m */,
 				C2CA91D118CE2DF200C9EFBE /* AudioPlayer.h */,
@@ -3610,7 +3610,7 @@
 				C21E2A8218FCA5B8008B1137 /* StyledPageControl.m in Sources */,
 				6EF7061E1BFB108900104DCB /* SDWebImageDecoder.m in Sources */,
 				C2E43D9918CCBB9F003642B5 /* RotateMenuView.m in Sources */,
-				C2FB7DDE18C365D8006C687E /* ConfigManager.m in Sources */,
+				C2FB7DDE18C365D8006C687E /* LZConfigManager.m in Sources */,
 				C2FEE2FE18F02C26000F6A38 /* SchoolCell.m in Sources */,
 				C278046418E1FD4C00622BFB /* SWTableViewCell.m in Sources */,
 				C224EA1B18D620E300BB627A /* TaskQueue.m in Sources */,
@@ -3804,10 +3804,11 @@
 					"$(PROJECT_DIR)/library/ShareSDK/Extend/GooglePlusSDK",
 					"$(PROJECT_DIR)/library/ShareSDK/Extend/Pinterest.embeddedframework",
 					"$(PROJECT_DIR)/library/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/library/ShareSDK/Extend/RenRenSDK",
 					"$(PROJECT_DIR)/library/ShareSDK",
 					"$(PROJECT_DIR)/library/ShareSDK/UI",
 					"$(PROJECT_DIR)/library",
+					"$(PROJECT_DIR)/library/ShareSDK/Extend/RenRen",
+					"$(PROJECT_DIR)/library/FrameWorks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby/baby-Prefix.pch";
@@ -3864,10 +3865,11 @@
 					"$(PROJECT_DIR)/library/ShareSDK/Extend/GooglePlusSDK",
 					"$(PROJECT_DIR)/library/ShareSDK/Extend/Pinterest.embeddedframework",
 					"$(PROJECT_DIR)/library/ShareSDK/Extend/QQConnectSDK",
-					"$(PROJECT_DIR)/library/ShareSDK/Extend/RenRenSDK",
 					"$(PROJECT_DIR)/library/ShareSDK",
 					"$(PROJECT_DIR)/library/ShareSDK/UI",
 					"$(PROJECT_DIR)/library",
+					"$(PROJECT_DIR)/library/ShareSDK/Extend/RenRen",
+					"$(PROJECT_DIR)/library/FrameWorks",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "baby/baby-Prefix.pch";

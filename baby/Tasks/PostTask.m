@@ -7,7 +7,7 @@
 //
 
 #import "PostTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "MemContainer.h"
 #import "GalleryPictureLK.h"
@@ -24,7 +24,7 @@
 //初始化新的图片，声音，长度
 //图片的压缩
 - (id)initNewPicture:(UIImage *)image voice:(NSData *)voice length:(int)voiceLength {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"picture_Add"];
         if (image) {
@@ -54,7 +54,7 @@
         return nil;
     }
     
-    self = [super initWithUrl:SERVERUR method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERUR method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"gallery_Add"];
         
@@ -128,7 +128,7 @@
 
 - (id)initNewGallery:(NSString *)galleryId topicId:(NSString *)topicId {
 
-    self = [super initWithUrl:SERVERUR method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERUR method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"topic_Relation"];
         [self addParameter:galleryId value:@"gallery_id"];
@@ -155,7 +155,7 @@
                         content:(NSString *)content
 {
 
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self)
     {
       //  NSLog(@"%@",self);
@@ -206,7 +206,7 @@
                         length:(int)voiceLength
                        content:(NSString *)content
 {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self)
     {
         [self addParameter:@"action" value:@"lcomment_Add"];

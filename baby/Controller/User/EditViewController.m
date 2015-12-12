@@ -13,7 +13,7 @@
 
 #import "User.h"
 #import "MemContainer.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 #import "UserTask.h"
 #import "TaskQueue.h"
@@ -103,7 +103,7 @@
 - (void)loadUserDetail {
     CallbackBlock update = ^(bool successful, id userInfo) {
         if (successful) {
-            User *user = [User getUserWithId:[ConfigManager me].userId];
+            User *user = [User getUserWithId:[LZConfigManager me].userId];
             if (user) {
                 avatar.imagePath = user.avatarMid;
                 nickName.text = user.showName;
@@ -116,9 +116,9 @@
         }
     };
 
-    User *user = [User getUserWithId:[ConfigManager me].userId];
+    User *user = [User getUserWithId:[LZConfigManager me].userId];
     if (!user) {
-        UserTask *task = [[UserTask alloc] initUserDetail:[ConfigManager me].userId];
+        UserTask *task = [[UserTask alloc] initUserDetail:[LZConfigManager me].userId];
         task.logicCallbackBlock = update;
         [TaskQueue addTaskToQueue:task];
         [task release];
@@ -157,7 +157,7 @@
         [UI hideIndicator];
         
         if (successful) {
-            UserTask *task = [[UserTask alloc] initUserDetail:[ConfigManager me].userId];
+            UserTask *task = [[UserTask alloc] initUserDetail:[LZConfigManager me].userId];
             [TaskQueue addTaskToQueue:task];
             [task release];
             
@@ -322,7 +322,7 @@
             [locale release];
             [birthdayPicker addTarget:self action:@selector(chooseDate:) forControlEvents:UIControlEventValueChanged];
             
-            User *user = [User getUserWithId:[ConfigManager me].userId];
+            User *user = [User getUserWithId:[LZConfigManager me].userId];
             birthdayPicker.date = [TOOL dateFromUnixTime:user.birthday];
         }
         [self.view addSubview:birthdayPicker];

@@ -10,7 +10,7 @@
 #import "TaskQueue.h"
 #import "Macro.h"
 #import "WelcomeViewController.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
  @interface TabbarController ()<UIAlertViewDelegate>
 
 - (TabbarSubviewController *)viewControllerAtIndex:(int)index;
@@ -300,7 +300,7 @@
     //chulijian
     if(index!=0)
     {
-                if (![[ConfigManager me] getSession])
+                if (![[LZConfigManager me] getSession])
                 
                 {
                     

@@ -48,7 +48,6 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wb2212006707</string>
-				<string></string>
 				<string>tencent1104925921</string>
 				<string>wxbd5609ded01a57da</string>
 			</array>
@@ -86,6 +85,20 @@
 	<array>
 		<string>wechat</string>
 		<string>weixin</string>
+		<string>mqqOpensdkSSoLogin</string>
+		<string>mqzone</string>
+		<string>sinaweibo</string>
+		<string>alipayauth</string>
+		<string>alipay</string>
+		<string>safepay</string>
+		<string>mqq</string>
+		<string>mqqapi</string>
+		<string>mqqopensdkapiV3</string>
+		<string>mqqopensdkapiV2</string>
+		<string>mqqapiwallet</string>
+		<string>mqqwpa</string>
+		<string>mqqbrowser</string>
+		<string>wtloginmqq2</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

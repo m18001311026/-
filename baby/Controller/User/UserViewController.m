@@ -11,7 +11,7 @@
 #import "GalleryViewController.h"
 #import "UserView.h"
 #import "UIButtonExtra.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "LKTask.h"
 #import "GalleryTask.h"

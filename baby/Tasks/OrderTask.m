@@ -7,7 +7,7 @@
 //
 
 #import "OrderTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "Order.h"
 #import "Lesson.h"
@@ -18,7 +18,7 @@
 @implementation OrderTask
 
 - (id)initOrderAdd:(NSArray *)lessonIds {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"order_Add"];
         
@@ -52,7 +52,7 @@
 }
 
 - (id)initOrderConfirm:(long)orderId payMethod:(int)payMethod {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"order_Confirm"];
         [self addParameter:@"order_id" value:[NSString stringWithFormat:@"%ld", orderId]];
@@ -76,7 +76,7 @@
 }
 
 - (id)initOrderListAtPage:(int)page count:(int)count {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"order_Query"];
         [self addParameter:@"page" value:[NSString stringWithFormat:@"%d", page]];
@@ -106,7 +106,7 @@
 }
 
 - (id)initOrderDetail:(long)orderId {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"order_Query"];
         [self addParameter:@"order_id" value:[NSString stringWithFormat:@"%ld", orderId]];
@@ -133,7 +133,7 @@
 }
 
 - (id)initLessonBoughtListAtPage:(int)page count:(int)count {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"lesson_Bought"];
         

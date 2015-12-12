@@ -9,7 +9,7 @@
 #import "MyQRViewController.h"
 #import "UIButtonExtra.h"
 #import "zbar.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "UIImage+MDQRCode.h"
 #import "ImageView.h"
 
@@ -100,10 +100,10 @@
     [back addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     [bbTopbar addSubview:back];
     
-//    qrView.image = [UIImage mdQRCodeForString:[NSString stringWithFormat:@"%ld", [ConfigManager me].userId]
+//    qrView.image = [UIImage mdQRCodeForString:[NSString stringWithFormat:@"%ld", [LZConfigManager me].userId]
 //                                         size:1000
 //                                    fillColor:[UIColor colorWithRed:1.0f green:53/255.0f blue:186/255.0f alpha:1]];
-    qrView.image = [UIImage mdQRCodeForString:[NSString stringWithFormat:@"%ld", [ConfigManager me].userId]
+    qrView.image = [UIImage mdQRCodeForString:[NSString stringWithFormat:@"%ld", [LZConfigManager me].userId]
                                          size:1000
                                     fillColor:[UIColor blackColor]];
     
@@ -122,17 +122,17 @@
 }
 
 - (void)updateLayout {
-    if ([ConfigManager me].userId) {
-        User *user = [User getUserWithId:[ConfigManager me].userId];
+    if ([LZConfigManager me].userId) {
+        User *user = [User getUserWithId:[LZConfigManager me].userId];
         if (user) {
             avatar.imagePath = user.avatarMid;
             userNameLabel.text = [user showName];
             ageLabel.text = [NSString stringWithFormat:@"%d岁", user.age];
         } else {
-            UserTask *task = [[UserTask alloc] initUserDetail:[ConfigManager me].userId];
+            UserTask *task = [[UserTask alloc] initUserDetail:[LZConfigManager me].userId];
             task.logicCallbackBlock = ^(bool successful, id userInfo) {
                 if (successful) {
-                    User *user = [User getUserWithId:[ConfigManager me].userId];
+                    User *user = [User getUserWithId:[LZConfigManager me].userId];
                     avatar.imagePath = user.avatarMid;
                     userNameLabel.text = [user showName];
                     ageLabel.text = [NSString stringWithFormat:@"%d岁", user.age];

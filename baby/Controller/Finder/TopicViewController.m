@@ -11,7 +11,7 @@
 
 #import "TopicTask.h"
 #import "TaskQueue.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Topic.h"
 
 #import "TopicGalleryViewController.h"

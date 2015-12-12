@@ -11,7 +11,7 @@
 #import "LComment.h"
 #import "User.h"
 #import "MemContainer.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 
 @interface LCommentCell ()
@@ -175,7 +175,7 @@
         }
     }
     
-    if (self.comment.userId == [ConfigManager me].userId) {
+    if (self.comment.userId == [LZConfigManager me].userId) {
         deleteBtn.frame = CGRectMake(280, 10, 40, 40);
         deleteBtn.hidden = NO;
     } else {

@@ -12,7 +12,7 @@
 #import "NSDateExtra.h"
 #import "Session.h"
 #import "User.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "MemContainer.h"
 
 
@@ -54,7 +54,7 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"userId" object:idString];
                 
                 Session *session = (Session *)[Session instanceFromDict:sessionDic];
-                [[ConfigManager me] setSession:session];
+                [[LZConfigManager me] setSession:session];
 
                 [[MemContainer me] instanceFromDict:userDic clazz:[User class]];
 
@@ -69,7 +69,7 @@
 }
 
 - (id)initUserDetail:(long)userId {
-    self = [super initWithUrl:SERVERURL method:GET session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:GET session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"user_Query"];
         [self addParameter:@"user_id" value:[NSString stringWithFormat:@"%ld", userId]];
@@ -100,7 +100,7 @@
 
 // mag : comment_message, system_message
 - (id)initUserDetail:(long)userId msg:(NSString *)msg {
-    self = [super initWithUrl:SERVERURL method:GET session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:GET session:[[LZConfigManager me] getSession].session];
     if (self) {
 //        [self addParameter:@"action" value:@"user_ResetMessage"];
 //        [self addParameter:@"user_id" value:[NSString stringWithFormat:@"%ld", userId]];
@@ -224,7 +224,7 @@
         gender:(int)male
         avatar:(UIImage *)avatar
           city:(int)cityId {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"user_Edit"];
         if (birthday) {
@@ -261,7 +261,7 @@
 }
 
 - (id)initEditHome:(UIImage *)home {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"user_Home"];
         if (home) {

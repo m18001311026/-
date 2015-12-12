@@ -10,7 +10,7 @@
 #import "City.h"
 #import "MemContainer.h"
 #import "NSDictionaryExtra.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 
 @implementation GeoTask
@@ -46,7 +46,7 @@
 }
 
 - (id)initUploadCity:(NSString *)cityName {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"user_City"];
         [self addParameter:@"city_name" value:cityName];

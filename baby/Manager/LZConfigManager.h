@@ -1,5 +1,5 @@
 //
-//  ConfigManager.h
+//  LZConfigManager.h
 //  baby
 //
 //  Created by zhang da on 14-3-2.
@@ -10,9 +10,9 @@
 
 @class Session;
 
-@interface ConfigManager : NSObject
+@interface LZConfigManager : NSObject
 
-+ (ConfigManager *)me;
++ (LZConfigManager *)me;
 
 - (void)setSession:(Session *)session;
 - (Session *)getSession;

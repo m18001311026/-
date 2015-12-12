@@ -7,7 +7,7 @@
 //
 
 #import "CartTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "Lesson.h"
 #import "UserLessonLK.h"
@@ -21,7 +21,7 @@
 }
 
 - (id)initEditLesson:(long)lessonId relation:(bool)relation {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"lesson_Relation"];
         [self addParameter:@"lesson_id" value:[NSString stringWithFormat:@"%ld", lessonId]];
@@ -29,7 +29,7 @@
         
         self.responseCallbackBlock = ^(bool succeeded, id userInfo) {
             if (succeeded) {
-                UserLessonLK *lk = [UserLessonLK getUserLessonLK:[[ConfigManager me] getSession].userId
+                UserLessonLK *lk = [UserLessonLK getUserLessonLK:[[LZConfigManager me] getSession].userId
                                                           lesson:lessonId];
                 lk.status = relation;
                 
@@ -44,7 +44,7 @@
 }
 
 - (id)initLessonRelationQuery:(long)lessonId {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"lesson_Relation"];
         [self addParameter:@"lesson_id" value:[NSString stringWithFormat:@"%ld", lessonId]];
@@ -53,11 +53,11 @@
             if (succeeded) {
                 int relation = [[userInfo objectForKey:@"relation"] intValue];
                 
-                UserLessonLK *lk = [UserLessonLK getUserLessonLK:[[ConfigManager me] getSession].userId
+                UserLessonLK *lk = [UserLessonLK getUserLessonLK:[[LZConfigManager me] getSession].userId
                                                           lesson:lessonId];
                 if (!lk) {
                     lk = [[UserLessonLK alloc] init];
-                    lk.userId = [[ConfigManager me] getSession].userId;
+                    lk.userId = [[LZConfigManager me] getSession].userId;
                     lk.lessonId = lessonId;
                     lk.status = relation;
                     [[MemContainer me] putObject:lk];
@@ -76,7 +76,7 @@
 }
 
 - (id)initLessonCart {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"lesson_Cart"];
         

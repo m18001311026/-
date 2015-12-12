@@ -16,7 +16,7 @@
 #import "Notification.h"
 #import "DataCenter.h"
 #import "UserTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 #define TITLE 90900
 #define DETAIL 89808
@@ -94,7 +94,7 @@
     
     [DataCenter shareDataCenter].sysMessage = 0;
     
-    long userId = [ConfigManager me].userId;
+    long userId = [LZConfigManager me].userId;
     UserTask *task1 = [[UserTask alloc] initUserDetail:userId msg:@"system_message"];
     task1.logicCallbackBlock = ^(bool succeeded, id userInfo) {
         

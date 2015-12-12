@@ -8,7 +8,7 @@
 
 #import "SettingViewController.h"
 #import "UIButtonExtra.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "WelcomeViewController.h"
 
 #import "SchoolViewController.h"

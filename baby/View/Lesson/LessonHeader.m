@@ -12,7 +12,7 @@
 #import "CartTask.h"
 #import "TaskQueue.h"
 #import "UserLessonLK.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Lesson.h"
 
 @interface LessonHeader () <ALMoviePlayerControllerDelegate>
@@ -55,7 +55,7 @@
         _moviePlayer = [[ALMoviePlayerController alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height) urlStr:self.videoPath];
         _moviePlayer.delegate = self;
 //        if (self.lessonRelation != 3) {
-//            if (![ConfigManager me].runInReviewMode) {
+//            if (![LZConfigManager me].runInReviewMode) {
 //                _moviePlayer.initialPlaybackTime = VIDEO_PREVIEW_BEGIN;
 //                _moviePlayer.endPlaybackTime = VIDEO_PREVIEW_BEGIN + VIDEO_PREVIEW_LENGTH;                
 //            }
@@ -109,7 +109,7 @@
         CartTask *task = [[CartTask alloc] initLessonRelationQuery:_lessonId];
         task.logicCallbackBlock = ^(bool succeeded, id userInfo) {
             if (succeeded) {
-                UserLessonLK *lk = [UserLessonLK getUserLessonLK:[ConfigManager me].userId
+                UserLessonLK *lk = [UserLessonLK getUserLessonLK:[LZConfigManager me].userId
                                                           lesson:_lessonId];
                 _lessonRelation = lk.status;
                 play();

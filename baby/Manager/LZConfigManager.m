@@ -1,15 +1,15 @@
 //
-//  ConfigManager.m
+//  LZConfigManager.m
 //  baby
 //
 //  Created by zhang da on 14-3-2.
 //  Copyright (c) 2014年 zhang da. All rights reserved.
 //
 
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 
-@interface ConfigManager () {
+@interface LZConfigManager () {
     float _serverVesion;
     bool _inReview;
     
@@ -19,15 +19,15 @@
 @end
 
 
-@implementation ConfigManager
+@implementation LZConfigManager
 
-static ConfigManager *_me = nil;
+static LZConfigManager *_me = nil;
 
-+ (ConfigManager *)me {
++ (LZConfigManager *)me {
     if (!_me) {
-        @synchronized([ConfigManager class]) {
+        @synchronized([LZConfigManager class]) {
             if (!_me) {
-                _me = [[ConfigManager alloc] init];
+                _me = [[LZConfigManager alloc] init];
             }
         }
     }
@@ -87,7 +87,7 @@ static ConfigManager *_me = nil;
 }
 
 - (bool)runInReviewMode {
-    NSString *current = [ConfigManager getCurrentVersion];
+    NSString *current = [LZConfigManager getCurrentVersion];
     float local = [current floatValue];
     return local > _serverVesion && _inReview;
 }

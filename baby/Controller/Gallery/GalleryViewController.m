@@ -21,7 +21,7 @@
 #import "GalleryTask.h"
 #import "PostTask.h"
 #import "TaskQueue.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "ShareManager.h"
 #import "Macro.h"
 
@@ -698,7 +698,7 @@
 #pragma UserVoiceInfoViewDelegate
 - (void)showUserDetail:(long)userId
 {
-    if (userId == [ConfigManager me].userId)
+    if (userId == [LZConfigManager me].userId)
     {
         SelfGalleryViewController *sCtr = [[SelfGalleryViewController alloc] init];
         [ctr pushViewController:sCtr animation:ViewSwitchAnimationSwipeR2L];

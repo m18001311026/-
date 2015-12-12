@@ -11,7 +11,7 @@
 #import "SelfView.h"
 #import "GalleryTask.h"
 #import "TaskQueue.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "ShareManager.h"
 #import "Gallery.h"
@@ -56,7 +56,7 @@
         [galleryTable release];
 
         header = [[SelfView alloc] initWithFrame:CGRectMake(0, 0, 320, 220)
-                                            forUser:[ConfigManager me].userId];
+                                            forUser:[LZConfigManager me].userId];
         header.delegate = self;
         [galleryTable setTableHeaderView:header];
         [header updateLayout];
@@ -124,16 +124,16 @@
 }
 
 - (void)loadGallery {
-    if ([ConfigManager me].userId < 1) {
+    if ([LZConfigManager me].userId < 1) {
         [UI showAlert:@"请先登录"];
         [galleryTable stopLoading];
         return;
     }
     
-    header.userId = [ConfigManager me].userId;
+    header.userId = [LZConfigManager me].userId;
     [header updateLayout];
     
-    GalleryTask *task = [[GalleryTask alloc] initUserGalleryList:[ConfigManager me].userId
+    GalleryTask *task = [[GalleryTask alloc] initUserGalleryList:[LZConfigManager me].userId
                                                             page:currentPage
                                                            count:PAGESIZE];
     task.logicCallbackBlock = ^(bool succeeded, id userInfo) {

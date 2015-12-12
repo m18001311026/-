@@ -11,11 +11,14 @@
 #import "WelcomeViewController.h"
 #import "SplashViewController.h"
 #import "LanuchViewController.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "MobClick.h"
 #import <ShareSDK/ShareSDK.h>
 #import "ShareManager.h"
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/TencentApiInterface.h>
+#import <TencentOpenAPI/TencentMessageObject.h>
+#import <TencentOpenAPI/TencentOAuthObject.h>
 #import "WeiboSDK.h"
 #import "AccountViewController.h"
 
@@ -216,7 +219,7 @@ NavigationControl *ctr;
 //        NSURLRequest *req = [NSURLRequest requestWithURL:url];
 //        [NSURLConnection connectionWithRequest:req delegate:self];
 //        
-//        if (![[ConfigManager me] getSession]) {
+//        if (![[LZConfigManager me] getSession]) {
 //            // 用户没有登陆
 //            WelcomeViewController *welVC = [[WelcomeViewController alloc] init];
 //            [ctr pushViewController:welVC animation:ViewSwitchAnimationNone];
@@ -229,7 +232,7 @@ NavigationControl *ctr;
         
         
         // 引导页
-        NSString *version = [ConfigManager getCurrentVersion];
+        NSString *version = [LZConfigManager getCurrentVersion];
         
         if (![SPLASH_VER isEqualToString:version]) {
             SplashViewController *sCtr = [[SplashViewController alloc] init];
@@ -300,7 +303,7 @@ NavigationControl *ctr;
 //    NSDictionary *appInfo = (NSDictionary *)json;
 //    
 //    NSString *version = [[[appInfo objectForKey:@"results"]objectAtIndex:0]objectForKey:@"version"];
-//    NSString *version1 = [ConfigManager getCurrentVersion];
+//    NSString *version1 = [LZConfigManager getCurrentVersion];
 //    
 //    if ([self updateFlagWithAPPversion:version1 AndSerVersion:version]) {
 //        UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"温馨提示" message:@"升级提示" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];

@@ -20,7 +20,7 @@
 #import "DataCenter.h"
 #import "GComment.h"
 #import "GalleryTask.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Shared.h"
 #import "UserTask.h"
 
@@ -87,7 +87,7 @@
     
     [DataCenter shareDataCenter].commentMessage = 0;
     
-    long userId = [ConfigManager me].userId;
+    long userId = [LZConfigManager me].userId;
     
     UserTask *task1 = [[UserTask alloc] initUserDetail:userId msg:@"comment_message"];
     task1.logicCallbackBlock = ^(bool succeeded, id userInfo) {
@@ -109,10 +109,10 @@
 
 - (void)loadNotification {
 
-    long userId = [ConfigManager me].userId;
+    long userId = [LZConfigManager me].userId;
     if (userId > 0) {
         
-        GalleryTask *task = [[GalleryTask alloc] initGCommentList:[ConfigManager me].userId];
+        GalleryTask *task = [[GalleryTask alloc] initGCommentList:[LZConfigManager me].userId];
         task.logicCallbackBlock = ^(bool succeeded, id userInfo) {
             
             if (succeeded) {

@@ -13,7 +13,7 @@
 #import "RotateNormalMenuItemButton.h"
 #import "LocationManager.h"
 
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "GeoTask.h"
 #import "SystemTask.h"
 #import "TaskQueue.h"
@@ -293,7 +293,7 @@
 - (void)timeAction
 {
     
-    long userId = [ConfigManager me].userId;
+    long userId = [LZConfigManager me].userId;
     
     UserTask *task = [[UserTask alloc] initUserDetail:userId];
     task.logicCallbackBlock = ^(bool succeeded, id userInfo) {

@@ -12,7 +12,7 @@
 #import "User.h"
 #import "LComment.h"
 
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 
 @implementation LessonTask
@@ -121,7 +121,7 @@
 }
 
 - (id)initDeleteLComment:(long)commentId {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"lcomment_Delete"];
         [self addParameter:@"comment_id" value:[NSString stringWithFormat:@"%ld", commentId]];

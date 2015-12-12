@@ -13,7 +13,7 @@
 #import "OrderTask.h"
 #import "TaskQueue.h"
 #import "UIButtonExtra.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 #define LESSON_PAGE_SIZE 5
 
@@ -64,7 +64,7 @@
 	// Do any additional setup after loading the view.
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self setViewTitle:[ConfigManager me].runInReviewMode? @"历史记录": @"购买记录"];
+    [self setViewTitle:[LZConfigManager me].runInReviewMode? @"历史记录": @"购买记录"];
     bbTopbar.backgroundColor = [UIColor colorWithRed:234/255.0 green:166/255.0 blue:31/255.0 alpha:1];
     
     UIButton *back = [UIButton buttonWithCustomStyle:CustomButtonStyleBack];

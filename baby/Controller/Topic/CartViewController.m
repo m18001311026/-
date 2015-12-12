@@ -8,14 +8,14 @@
 
 #import "CartViewController.h"
 #import "LessonDetailViewController.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "CartTask.h"
 #import "OrderTask.h"
 #import "TaskQueue.h"
 #import "Lesson.h"
 //#import <AlipaySDK/Alipay.h>
 #import "MobClick.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 
 #if TARGET_IPHONE_SIMULATOR
 #else
@@ -95,7 +95,7 @@
 
 - (void)loadCart {
     
-    if ([[ConfigManager me] runInReviewMode]) {
+    if ([[LZConfigManager me] runInReviewMode]) {
         [lessons removeAllObjects];
         lessonTable.hasMore = NO;
         [lessonTable reloadData];
@@ -253,13 +253,13 @@
     
     UIBlockSheet *sheet = [[UIBlockSheet alloc] initWithTitle:@"请选择支付方式"];
     
-    if ([ConfigManager me].enableAlipay) {
+    if ([LZConfigManager me].enableAlipay) {
         [sheet addButtonWithTitle:@"支付宝" block: ^{
             [self checkoutWithAlipay];
         }];
     }
     
-    if ([ConfigManager me].enableUnionPay) {
+    if ([LZConfigManager me].enableUnionPay) {
         [sheet addButtonWithTitle: @"银联" block: ^{
             [self checkoutWithUnionpay];
         }];

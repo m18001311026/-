@@ -25,7 +25,7 @@
 #import "TaskQueue.h"
 
 #import <ShareSDK/ShareSDK.h>
-//#import "ConfigManager.h"
+//#import "LZConfigManager.h"
 #import "MemContainer.h"
 #import "NSStringExtra.h"
 #import "NSDictionaryExtra.h"
@@ -49,20 +49,28 @@
 @property (nonatomic,strong) NSString * openid;
 @end
 
-@implementation WelcomeViewController {
-    TencentOAuth *_tencentOauth;
+@implementation WelcomeViewController
+{
+    
     NSArray *_permissions;
     UILabel *resultLable;
     UILabel *tokenLable;
+    
+;
 }
+@synthesize tencentOauth = _tencentOauth;
 
 - (void)dealloc {
+    
+    [_tencentOauth release];
+    _tencentOauth = nil;
     [super dealloc];
     
     
 }
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(getAccess_token:) name:@"WexinLogin"
@@ -282,6 +290,21 @@
     [super didReceiveMemoryWarning];
 
 }
++ (WelcomeViewController *)getinstance
+{
+    @synchronized(self)
+    {
+        if (nil)
+        {
+//            //g_instance = [[sdkCall alloc] init];
+//            g_instance = [[super allocWithZone:nil] init];
+//            [g_instance setPhotos:[NSMutableArray arrayWithCapacity:1]];
+//            [g_instance setThumbPhotos:[NSMutableArray arrayWithCapacity:1]];
+        }
+    }
+    
+    return nil;
+}
 #pragma  mark - qq
 /*-(void)getLoginInfoWithLoginType:(enum LoginType)type
 {
@@ -357,19 +380,27 @@
 
 - (void)doLoginWithqq
 {
-
-//  [self dismissKeyboard];
+  [self dismissKeyboard];
+    
 
     if ([TencentOAuth iphoneQQInstalled])
     {
+        
         _tencentOauth = [[TencentOAuth alloc] initWithAppId:@"1104925921" andDelegate:self];
-        
-        
-        _permissions = [NSArray arrayWithObjects:kOPEN_PERMISSION_GET_INFO, kOPEN_PERMISSION_GET_USER_INFO, kOPEN_PERMISSION_GET_SIMPLE_USER_INFO, nil];
+
+         _permissions = [NSArray arrayWithObjects:
+                                kOPEN_PERMISSION_GET_INFO,
+                         kOPEN_PERMISSION_GET_USER_INFO,
+                         kOPEN_PERMISSION_GET_SIMPLE_USER_INFO, nil];
         
         [_tencentOauth authorize:_permissions inSafari:NO];
+        [_tencentOauth accessToken];
+        [_tencentOauth openId];
 
-    }else
+
+    }
+    
+    else
     {
         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提示" message:@"由于您的手机缺少QQ客户端，无法完成授权登录！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil];
         [alert show];
@@ -556,7 +587,7 @@
 
 - (void)tencentDidLogin {
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.qq.com/user/get_user_info?oauth_consumer_key=1101357992&access_token=%@&openid=%@&format=json", _tencentOauth.accessToken, _tencentOauth.openId]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.qq.com/user/get_user_info?oauth_consumer_key=1104925921&access_token=%@&openid=%@&format=json", _tencentOauth.accessToken, _tencentOauth.openId]];
     NSLog(@"%@", url);
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:url];

@@ -13,7 +13,7 @@
 #import "GalleryTask.h"
 #import "ActivityTask.h"
 #import "TaskQueue.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "Activity.h"
 #import "Gallery.h"
@@ -104,7 +104,7 @@
     
     [DataCenter shareDataCenter].activityMessage = 0;
     
-    long userId = [ConfigManager me].userId;
+    long userId = [LZConfigManager me].userId;
     
     UserTask *task1 = [[UserTask alloc] initUserDetail:userId msg:@"activity_message"];
     task1.logicCallbackBlock = ^(bool succeeded, id userInfo) {

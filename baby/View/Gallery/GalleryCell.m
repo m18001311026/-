@@ -12,7 +12,7 @@
 #import "Gallery.h"
 #import "Picture.h"
 #import "GalleryPictureLK.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "GalleryTask.h"
 #import "LKTask.h"
@@ -541,7 +541,7 @@
 //喜欢的画
 - (void)likeGallery
 {
-    if ([[ConfigManager me] getSession]) {
+    if ([[LZConfigManager me] getSession]) {
         
         CallbackBlock likeBlock = ^(bool succeeded, id userInfo) {
             if (succeeded && self.gallery.liked) {
@@ -648,7 +648,7 @@
     
  
     
-    if (self.gallery.userId == [ConfigManager me].userId)
+    if (self.gallery.userId == [LZConfigManager me].userId)
     {
         likeBtn.frame =    CGRectMake(0, y, 81, 55);
         commentBtn.frame = CGRectMake(80, y, 80, 55);

@@ -7,7 +7,7 @@
 //
 
 #import "TabbarItem.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "WelcomeViewController.h"
 #import "RootViewController.h"
 
@@ -97,7 +97,7 @@
 //        
 //        if(!idx==0)
 //        {
-//                    if (![[ConfigManager me] getSession]) {
+//                    if (![[LZConfigManager me] getSession]) {
 //                        // 用户没有登陆
 //                        WelcomeViewController *welVC = [[WelcomeViewController alloc] init];
 //                        RootViewController * root=[[RootViewController alloc]init];

@@ -8,7 +8,7 @@
 
 #import "NotificationAtTask.h"
 #import "NotificationAt.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "User.h"
 #import "Gallery.h"
@@ -18,12 +18,12 @@
 @implementation NotificationAtTask
 
 - (id)initAtListAtPage:(int)page count:(int)count {
-    self = [super initWithUrl:SERVERURL method:POST session:[[ConfigManager me] getSession].session];
+    self = [super initWithUrl:SERVERURL method:POST session:[[LZConfigManager me] getSession].session];
     if (self) {
         [self addParameter:@"action" value:@"notificationat_Query"];
         [self addParameter:@"page" value:[NSString stringWithFormat:@"%d", page]];
         [self addParameter:@"count" value:[NSString stringWithFormat:@"%d", count]];
-        [self addParameter:@"user_id" value:[NSString stringWithFormat:@"%ld", [ConfigManager me].userId]];
+        [self addParameter:@"user_id" value:[NSString stringWithFormat:@"%ld", [LZConfigManager me].userId]];
 
         self.responseCallbackBlock = ^(bool succeeded, id userInfo) {
             NSArray *notifications = [userInfo objectForKey:@"notifications"];

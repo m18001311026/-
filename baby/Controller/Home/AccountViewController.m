@@ -9,7 +9,7 @@
 #import "AccountViewController.h"
 #import "SelfGalleryViewController.h"
 #import "TaskQueue.h"
-#import "ConfigManager.h"
+#import "LZConfigManager.h"
 #import "Session.h"
 #import "EditViewController.h"
 #import "ImagePickerController.h"
@@ -64,7 +64,7 @@
         [funcTable release];
         
         header = [[SelfSummaryView alloc] initWithFrame:CGRectMake(0, 0, 320, 220)
-                                                forUser:[ConfigManager me].userId];
+                                                forUser:[LZConfigManager me].userId];
         header.delegate = self;
         [funcTable setTableHeaderView:header];
         [header updateLayout];
@@ -126,10 +126,10 @@
 
 #pragma ui event
 - (void)loadUserDetail {
-    header.userId = [ConfigManager me].userId;
+    header.userId = [LZConfigManager me].userId;
     
-    if ([ConfigManager me].userId > 0) {
-        UserTask *task = [[UserTask alloc] initUserDetail:[ConfigManager me].userId];
+    if ([LZConfigManager me].userId > 0) {
+        UserTask *task = [[UserTask alloc] initUserDetail:[LZConfigManager me].userId];
         task.logicCallbackBlock = ^(bool successful, id userInfo) {
             [header updateLayout];
             funcTable.isRefreshing = NO;
@@ -195,7 +195,7 @@
     switch (indexPath.row) {
         case 0: cell.textLabel.text = @"我的二维码"; break;
         case 1: cell.textLabel.text = @"消息"; break;
-//        case 2: cell.textLabel.text = [ConfigManager me].runInReviewMode? @"历史记录": @"购买记录"; break;
+//        case 2: cell.textLabel.text = [LZConfigManager me].runInReviewMode? @"历史记录": @"购买记录"; break;
         case 2: cell.textLabel.text = @"我的收藏"; break;
         case 3: cell.textLabel.text = @"扫码加好友"; break;
         //case 4: cell.textLabel.text = @"视频浏览"; break;
@@ -279,7 +279,7 @@
 
 #pragma mark accountview delegate
 - (void)editUserDetail {
-    if ([ConfigManager me].userId) {
+    if ([LZConfigManager me].userId) {
         EditViewController *eCtr = [[EditViewController alloc] initWithCallback:^(bool succeeded) {
             if (succeeded) {
                 [self loadUserDetail];
@@ -291,7 +291,7 @@
 }
 
 - (void)showPicture {
-    if ([ConfigManager me].userId) {
+    if ([LZConfigManager me].userId) {
         SelfGalleryViewController *sCtr = [[SelfGalleryViewController alloc] init];
         [ctr pushViewController:sCtr animation:ViewSwitchAnimationBounce];
         [sCtr release];
@@ -299,23 +299,23 @@
 }
 
 - (void)showFriend {
-    if ([ConfigManager me].userId) {
-        FriendViewController *fCtr = [[FriendViewController alloc] initWithUser:[ConfigManager me].userId];
+    if ([LZConfigManager me].userId) {
+        FriendViewController *fCtr = [[FriendViewController alloc] initWithUser:[LZConfigManager me].userId];
         [ctr pushViewController:fCtr animation:ViewSwitchAnimationBounce];
         [fCtr release];
     }
 }
 
 - (void)showFan {
-    if ([ConfigManager me].userId) {
-        FanViewController *fCtr = [[FanViewController alloc] initWithUser:[ConfigManager me].userId];
+    if ([LZConfigManager me].userId) {
+        FanViewController *fCtr = [[FanViewController alloc] initWithUser:[LZConfigManager me].userId];
         [ctr pushViewController:fCtr animation:ViewSwitchAnimationBounce];
         [fCtr release];
     }
 }
 
 - (void)editUserHome {
-    if ([ConfigManager me].userId) {
+    if ([LZConfigManager me].userId) {
         UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"修改背景"
                                                            delegate:self
                                                   cancelButtonTitle:@"取消"
@@ -344,7 +344,7 @@
             task.logicCallbackBlock = ^(bool successful, id userinfo) {
                 [UI hideIndicator];
                 if (successful) {
-                    UserTask *task = [[UserTask alloc] initUserDetail:[ConfigManager me].userId];
+                    UserTask *task = [[UserTask alloc] initUserDetail:[LZConfigManager me].userId];
                     [TaskQueue addTaskToQueue:task];
                     [task release];
                     
