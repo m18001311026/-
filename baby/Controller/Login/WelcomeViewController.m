@@ -396,6 +396,7 @@
         [_tencentOauth authorize:_permissions inSafari:NO];
         [_tencentOauth accessToken];
         [_tencentOauth openId];
+        [_tencentOauth getUserInfo];
 
 
     }
